@@ -603,21 +603,27 @@
         .sidebar-q-btn.flagged { background: #f59e0b !important; color: #fff !important; }
 
         .sidebar-arrow-indicator {
-            content: '';
-            position: absolute;
-            right: 0px;
-            top: 0;
-            width: 0;
-            height: 0;
-            border-top: 16px solid transparent;
-            border-bottom: 16px solid transparent;
-            border-left: 8px solid #3b82f6;
-            z-index: 10;
-            display: none;
-        }
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 8px solid #3b82f6;
+    z-index: 10;
+    display: none;
+}
 
-        .sidebar-q-container.active-q .sidebar-arrow-indicator { display: block; }
-        .sidebar-q-container.active-q .sidebar-q-btn.flagged + .sidebar-arrow-indicator { border-left-color: #f59e0b !important; }
+.sidebar-q-container.active-q .sidebar-arrow-indicator { display: block; }
+
+/* سهم السؤال الحالي إذا كان عليه علم (برتقالي) */
+.sidebar-q-container.active-q .sidebar-q-btn.flagged + .sidebar-arrow-indicator { border-left-color: #f59e0b !important; }
+
+/* سهم السؤال الحالي إذا تم حلّه (أخضر) - السطر الجديد */
+.sidebar-q-container.active-q .sidebar-q-btn.answered + .sidebar-arrow-indicator { border-left-color: #22c55e !important; }
+        
 
         .question-area {
             flex: 1;
@@ -819,7 +825,7 @@
             </div>
             <div class="user-text">
                 <span>Welcome</span>
-                <span>yousef abdulrhman alhodaib</span>
+                <span>yousef abdulrhman saud alhodaib</span>
             </div>
         </div>
 
@@ -957,7 +963,7 @@
             <div class="student-row">
                 <div>
                     <div class="student-name-label">Student Name</div>
-                    <div class="student-name">yousef abdulrhman alhodaib</div>
+                    <div class="student-name">yousef abdulrhman saud alhodaib</div>
                 </div>
                 <div class="header-buttons">
                     <div id="hiddenSecretPasswordDisplay"></div>
@@ -1083,7 +1089,7 @@
             </div>
             <div class="user-text">
                 <span>Welcome</span>
-                <span>yousef abdulrhman alhodaib</span>
+                <span>yousef abdulrhman saud alhodaib</span>
             </div>
         </div>
         <div class="icons">
@@ -1176,7 +1182,7 @@
                 </div>
                 <div class="profile-info-text">
                     <span class="welcome-lbl">Welcome</span>
-                    <span class="name-lbl">yousef abdulrhman alhodaib</span>
+                    <span class="name-lbl">yousef abdulrhman saud alhodaib</span>
                 </div>
             </div>
             <button class="signout-btn" onclick="closeProfileSheet(null)">Sign out</button>
