@@ -404,7 +404,7 @@
             --sidebar-bg: #000000; 
             --card-bg: #2a2d35;
             --text-primary: #ffffff;
-            --text-muted: #9aa0ad;
+            --text-muted: #ffffff;
             --option-bg: #2c2f38;
             --option-border: #3a3d48;
             --option-selected-bg: #1a2a4a;
@@ -417,15 +417,15 @@
 
         [data-theme="light"] {
             --bg: #f4f4f4;
-            --header-bg: #e8e8e8;
-            --sidebar-bg: #d8d8d8;
+            --header-bg: #1e3a5f;
+            --sidebar-bg: #eef7f6;
             --card-bg: #e0e0e0;
-            --text-primary: #111111;
-            --text-muted: #555555;
+            --text-primary: #000000;
+            --text-muted: #ffffff;
             --option-bg: #d8d8d8;
             --option-border: #bbbbbb;
             --option-selected-bg: #cde0fa;
-            --footer-bg: #d0d0d0;
+            --footer-bg: #223553;
             --footer-border: #bbbbbb;
             --sidebar-default: #1e3a5f;
             --progress-track: #aaaaaa;
@@ -482,7 +482,7 @@
         .student-name {
             font-size: 12px;
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--text-muted);
             line-height: 1.2;
             text-transform: uppercase;
         }
@@ -512,8 +512,8 @@
 
         .btn-outline {
             background: transparent;
-            border: 1.5px solid var(--text-primary);
-            color: var(--text-primary);
+            border: 1.5px solid var(--text-muted);
+            color: var(--text-muted);
             border-radius: 6px;
             padding: 4px 12px;
             font-size: 12.5px;
@@ -524,22 +524,23 @@
 
         .progress-section { margin-top: 10px; }
         .progress-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-        .progress-label { font-size: 12px; color: var(--text-primary); min-width: 110px; }
+        .progress-label { font-size: 12px; color: var(--text-muted); min-width: 110px; }
         .progress-track { flex: 1; height: 6px; background: var(--progress-track); border-radius: 3px; overflow: hidden; }
         .progress-bar { width: 0%; height: 100%; background: #22c55e; border-radius: 3px; transition: width 0.4s ease; }
-        .progress-pct { font-size: 12px; color: var(--text-primary); min-width: 35px; text-align: right; }
+        .progress-pct { font-size: 12px; color: var(--text-muted); min-width: 35px; text-align: right; }
 
-        .section-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #41444d; 
-            border: 1.5px solid #3b82f6;
-            border-radius: 5px;
-            padding: 6px 12px;
-            margin-top: 6px;
-            min-width: 140px;
-        }
+.section-badge {
+    display: inline-flex;
+    flex-direction: column; /* لترتيب النصوص في الأعلى والشريط في الأسفل */
+    align-items: stretch;
+    background: #41444d; 
+    border: 1.5px solid #3b82f6;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-top: 6px;
+    min-width: 140px;
+    gap: 6px; /* مسافة فاصلة بين السطر العلوي وشريط التقدم */
+}
 
         .section-title { font-size: 12.5px; font-weight: 600; color: var(--text-primary); }
         .section-pct { font-size: 12.5px; color: var(--text-primary); font-weight: 600; margin-left: 8px; }
@@ -987,11 +988,16 @@
                     </div>
                     <span class="progress-pct" id="timePercentLabel">0%</span>
                 </div>
-                <div class="section-badge">
-                    <span class="section-title">Default Section</span>
-                    <span class="section-pct" id="modePercentLabel">0%</span>
-                </div>
-                <div id="modeProgressBarFill" style="display:none; width:0%;"></div>
+<div class="section-badge">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%;">
+        <span class="section-title">Default Section</span>
+        <span class="section-pct" id="modePercentLabel">0%</span>
+    </div>
+    
+<div class="progress-track" style="height: 5px; background: rgba(0, 0, 0, 0.4); border-radius: 3px; overflow: hidden; width: 100%; margin-top: 2px; flex: none;">
+    <div class="progress-bar" id="modeProgressBarFill" style="width: 0%; height: 100%; background: #22c55e; transition: width 0.4s ease; border-radius: 3px;"></div>
+</div>
+</div>
             </div>
         </div>
 
@@ -1143,7 +1149,7 @@
     <div class="modal-box">
         <div class="modal-icon" id="modal-badge-icon">i</div>
         <div class="modal-title" id="modal-title-text">Notification</div>
-        <div class="modal-text" id="modal-body-text">Exam Result is not published.</div>
+        <div class="modal-text" id="modal-body-text">Exam Result is not published. Once your result is published, you will receive a notification.</div>
         
         <div id="modal-password-group" class="modal-input-group hidden">
             <label>Examination Password</label>
@@ -1291,7 +1297,7 @@
     function openResultsNotificationModal() {
         document.getElementById('modal-badge-icon').textContent = 'i';
         document.getElementById('modal-title-text').textContent = 'Notification';
-        document.getElementById('modal-body-text').textContent = 'Exam Result is not published.';
+        document.getElementById('modal-body-text').textContent = 'Exam Result is not published. Once your result is published, you will receive a notification.';
         document.getElementById('modal-password-group').classList.add('hidden');
         document.getElementById('modal-buttons-container').innerHTML = `<button class="modal-btn" onclick="closeModal()">Ok</button>`;
         document.getElementById('score-modal').classList.remove('hidden');
@@ -1353,10 +1359,13 @@
 
         const currentMinutesUsed = Math.floor(examTimeUsedSeconds / 60);
         document.getElementById("timeMinutesLabel").textContent = `Time ${currentMinutesUsed} / ${examTimeTotalMinutes} (mins)`;
-        const timePercent = Math.round((currentMinutesUsed / examTimeTotalMinutes) * 100);
-        document.getElementById("timePercentLabel").textContent = `${timePercent}%`;
-        document.getElementById("timeProgressBarFill").style.width = `${timePercent}%`;
-        document.getElementById("modePercentLabel").textContent = `${itemsPercent}%`;
+const timePercent = Math.round((currentMinutesUsed / examTimeTotalMinutes) * 100);
+document.getElementById("timePercentLabel").textContent = `${timePercent}%`;
+document.getElementById("timeProgressBarFill").style.width = `${timePercent}%`;
+
+// التعديل: تحديث النسبة النصية وشريط تقدم الـ Default Section معاً
+document.getElementById("modePercentLabel").textContent = `${itemsPercent}%`;
+document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
     }
 
     function drawSidebarNavigation() {
@@ -1571,7 +1580,7 @@
             const hrs = Math.floor(remainSeconds / 3600).toString().padStart(2, '0');
             const mins = Math.floor((remainSeconds % 3600) / 60).toString().padStart(2, '0');
             const secs = (remainSeconds % 60).toString().padStart(2, '0');
-            document.getElementById("countdownTimerText").textContent = `00:${mins}:${secs}`;
+            document.getElementById("countdownTimerText").textContent = `${hrs}:${mins}:${secs}`;
             syncExamOverviewMetrics();
         }, 1000);
 
