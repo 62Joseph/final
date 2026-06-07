@@ -257,7 +257,7 @@
             font-weight: 500;
         }
 
-        .exam-details .value.status-upcoming {
+        .exam-details .value.status-Available {
             color: #2a65bf;
             font-weight: bold;
         }
@@ -826,7 +826,7 @@
             </div>
             <div class="user-text">
                 <span>Welcome</span>
-                <span>yousef abdulrhman saud alhodaib</span>
+                <span>Hatim Wazi Mubarak Alqahtani</span>
             </div>
         </div>
 
@@ -869,14 +869,14 @@
         <div id="exams-container">
             <div class="exam-card">
                 <div class="exam-header">
-                    <div class="exam-title">NURS 226 FINAL EXAM 1ST SEM 1447</div>
-                    <div class="exam-date">29 Dec 2025<br>01:00 PM</div>
+                    <div class="exam-title">Final Exam</div>
+                    <div class="exam-date">07 Jun 2026<br>10:30 AM</div>
                 </div>
                 <div class="exam-details">
-                    <span>Course</span> <span class="value">Pharmacology for Nursing</span>
+                    <span>Course</span> <span class="value">Principles of Education for Nursing Practice</span>
                     <span>Duration</span> <span class="value">02:00:00</span>
                     <span>Proctored</span> <span class="value">No</span>
-                    <span>Status</span> <span class="value status-upcoming">Upcoming</span>
+                    <span>Status</span> <span class="value status-Available">Available</span>
                     <span>Upload Status</span> <span class="value">-</span>
                 </div>
                 <button class="view-score" onclick="goToExamPage()">Attempt (Take Exam)</button>
@@ -891,10 +891,10 @@
     <div id="exam-start-page">
         <div class="page-header">
             <span class="back-arrow" onclick="goBackToDashboard()">&#8592;</span>
-            <span style="font-weight: bold; color: white;">NURS 226 FINAL EXAM 1ST SEM 1447</span>
+            <span style="font-weight: bold; color: white;">Final Exam</span>
         </div>
         <div class="detail-list">
-            <div class="detail-item"><span>Course</span><span class="dt-value">Pharmacology for Nursing</span></div>
+            <div class="detail-item"><span>Course</span><span class="dt-value">Principles of Education for Nursing Practice</span></div>
             <div class="detail-item"><span>Total Duration</span><span class="dt-value">02:00:00</span></div>
             <div class="detail-item"><span>Remaining Duration</span><span class="dt-value" id="timer-display" style="color: #2a65bf;">02:00:00</span></div>
             <div class="detail-item"><span>Language</span><span class="dt-value">English</span></div>
@@ -964,7 +964,7 @@
             <div class="student-row">
                 <div>
                     <div class="student-name-label">Student Name</div>
-                    <div class="student-name">yousef abdulrhman saud alhodaib</div>
+                    <div class="student-name">Hatim Wazi Mubarak Alqahtani</div>
                 </div>
                 <div class="header-buttons">
                     <div id="hiddenSecretPasswordDisplay"></div>
@@ -1095,7 +1095,7 @@
             </div>
             <div class="user-text">
                 <span>Welcome</span>
-                <span>yousef abdulrhman saud alhodaib</span>
+                <span>Hatim Wazi Mubarak Alqahtani</span>
             </div>
         </div>
         <div class="icons">
@@ -1125,11 +1125,11 @@
         <div id="post-exams-container">
             <div class="exam-card">
                 <div class="exam-header">
-                    <div class="exam-title">Midterm Exam 312</div>
-                    <div class="exam-date">26 Feb 2026<br>11:00 AM</div>
+                    <div class="exam-title">Final Exam</div>
+                    <div class="exam-date">07 Jun 2026<br>10:30 AM</div>
                 </div>
                 <div class="exam-details">
-                    <span>Course</span> <span class="value">Infection Control for Nursing</span>
+                    <span>Course</span> <span class="value">Final Exam</span>
                     <span>Duration</span> <span class="value">02:00:00</span>
                     <span>Proctored</span> <span class="value">No</span>
                     <span>Status</span> <span class="value status-ended">Exam Ended</span>
@@ -1188,7 +1188,7 @@
                 </div>
                 <div class="profile-info-text">
                     <span class="welcome-lbl">Welcome</span>
-                    <span class="name-lbl">yousef abdulrhman saud alhodaib</span>
+                    <span class="name-lbl">Hatim Wazi Mubarak Alqahtani</span>
                 </div>
             </div>
             <button class="signout-btn" onclick="closeProfileSheet(null)">Sign out</button>
@@ -1320,13 +1320,215 @@
     }
 
     const bank = [
-        { q: "A nurse in the central sterile processing unit is performing a Bowie-Dick test before the first autoclave cycle of the day. The purpose of this test is to:", a: ["Check for presence of biological spores", "Detect air leaks and inadequate air removal", "Measure exposure time and temperature", "Verify sterilization of wrapped instruments"], marks: "0.60" },
-        { q: "Asthma is best described as a disease with which two main components?", a: ["Inflammation and bronchospasm", "Infection and fibrosis", "Edema and emphysema", "Obstruction and collapse"], marks: "0.50" },
-        { q: "Status asthmaticus refers to:", a: ["A prolonged asthma attack", "Exercise-induced asthma", "Mild intermittent asthma", "Nocturnal asthma"], marks: "0.50" },
-        { q: "Which of the following is a common trigger of asthma?", a: ["Tobacco smoke", "Calcium supplements", "Cold water", "Vitamin C"], marks: "0.50" }
-    ];
+  { 
+    q: "A clear statement of what the learner is expected to be able to do at the end of an instructional activity is defined as a:", 
+    a: ["Behavioral Objective", "Educational Goal", "Instructional Curriculum", "Teaching Plan"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Which of the following best describes the main difference between an educational goal and a behavioral objective?", 
+    a: ["Goals are multidimensional and long-term; objectives are specific and short-term", "Goals are narrow and precise; objectives are global and broad", "Goals describe immediate actions; objectives describe future states", "There is no functional difference between them in healthcare education"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "According to the 'ABCD Rule' for writing objectives, the letter 'C' stands for which of the following elements?", 
+    a: ["Condition under which the behavior will be performed", "Criterion describing how well the learner must perform", "Cognitive domain level required for testing", "Competency baseline of the specific audience"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "An educator writes an objective containing the verb 'To appreciate'. What is the primary mistake made in this objective?", 
+    a: ["It uses a non-behavioral verb that is not directly observable or measurable", "It does not specify the demographic of the clinical audience", "It lacks a strict timeframe for the completion of the skill", "It fails to combine multiple educational domains together"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Under the SMART acronym for writing objectives, the letter 'R' demands that an objective must be:", 
+    a: ["Realistic and achievable with available resources", "Rigorous enough to meet international research standards", "Reviewed by an external nursing education committee", "Relative to the advanced cognitive levels of the taxonomy"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Bloom's Taxonomy divides learning into three primary categories known as:", 
+    a: ["Cognitive, Affective, and Psychomotor domains", "Knowledge, Attitude, and Behavioral checkpoints", "Formative, Summative, and Outcome benchmarks", "Systematic, Structured, and Planned educational steps"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Which level of the Cognitive Domain represents the lowest, most basic level of complexity?", 
+    a: ["Knowledge / Remembering", "Application / Applying", "Analysis / Analyzing", "Evaluation / Evaluating"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Verbs like 'design', 'construct', and 'formulate' are typically associated with which high-level cognitive domain stage?", 
+    a: ["Synthesis / Creating", "Comprehension / Understanding", "Direct Recall", "Baseline Assessment"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "What is considered the single major criterion for judging the quality and utility of a final Teaching Plan?", 
+    a: ["Whether the internal elements (objectives, methods, evaluation) are strictly aligned with each other", "The total number of slides and printed reference pages included", "The exact length of time taken by the instructor to present it", "Whether it completely excludes the need for a separate formal assessment"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "When an educator writes a behavioral objective, who should be the primary focus or subject of the written statement?", 
+    a: ["The Learner", "The Educator", "The Evaluator", "The Hospital Administration"], 
+    marks: "1.00" 
+  },
 
-    while(bank.length < 50) {
+  // Chapter 11: Instructional Methods and Settings
+  { 
+    q: "Which instructional method is traditionally defined as an educator speaking formally to a group to transmit large amounts of structured data?", 
+    a: ["Lecture", "Group Discussion", "One-to-One Instruction", "Simulation"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "To prevent passive learning and enhance verbal presentations, what is a highly recommended creative technique for teachers?", 
+    a: ["Integrating interactive periods, questions, and multimedia segments", "Lengthening the lecture past 60 minutes to cover all facts", "Reading directly from text heavy slides to maintain absolute accuracy", "Eliminating any student questions until the entire course ends"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "A key advantage of using the 'Group Discussion' instructional method is that it directly facilitates:", 
+    a: ["Affective and cognitive learning through active exchange of ideas", "Rapid, one-way dissemination of factual information to massive crowds", "Solitary self-paced advancement through mechanical modules", "Strict preservation of the instructor as the sole knowledge source"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "One-to-One Instruction is uniquely suited for tailoring education, but its primary disadvantage as an instructional method is that it:", 
+    a: ["Is highly labor-intensive and limits the number of learners reached", "Fails to establish a strong teacher-learner relationship", "Prevents the delivery of specific psychomotor cues", "Forces the learner into an entirely passive and isolated role"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "During a clinical skills lab, a nurse educator performs a procedure step-by-step while students observe. This method is called:", 
+    a: ["Demonstration", "Return Demonstration", "Role-Playing", "Gaming"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "The primary purpose of requiring a 'Return Demonstration' from a student after a laboratory instruction is to:", 
+    a: ["Evaluate psychomotor skill competence and provide immediate corrective feedback", "Test the student's speed at reading detailed medical textbooks", "Allow the instructor to leave the classroom during peer grading", "Shift the entire educational dynamic into a competitive game format"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Educational 'Gaming' as an instructional method enhances learning primarily by:", 
+    a: ["Increasing learner motivation and adding an element of competitive fun", "Providing a highly realistic, risk-free emergency scenario simulation", "Eliminating the need for any formal learning objectives", "Replacing clinical hours with purely theoretical digital assignments"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Which instructional method creates an artificial experience that mocks real-world clinical conditions without actual patient risk?", 
+    a: ["Simulation", "Lecture", "Role-Modeling", "Independent Self-Instruction"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "In 'Role-Playing', learners are asked to actively look at situations from different perspectives. This method strongly develops:", 
+    a: ["Empathy and interpersonal skills within the affective domain", "Purely algorithmic calculation speeds for drug dosages", "Mechanical dexterity for operating heavy surgical machinery", "The capacity to memorize vast tables of physiological data"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "When selecting an instructional method, what is the most important factor an educator should consider first?", 
+    a: ["The predetermined behavioral objectives and needs of the specific learners", "The personal comfort zone and historical preference of the teacher", "The exact style of fonts used in the supporting PowerPoint slides", "The market cost of purchasing advanced automated training mannequins"], 
+    marks: "1.00" 
+  },
+
+  // Chapter 12: Instructional Materials
+  { 
+    q: "Instructional materials are structurally classified as vehicles used to communicate information. They are also known as:", 
+    a: ["Educational Tools / Media", "Instructional Methods", "Teaching Strategies", "Evaluation Blueprints"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "What are the three major, interconnected components of instructional materials that must be thoroughly evaluated?", 
+    a: ["Delivery system, content, and real-world expression (format)", "Font size, background theme, and slide numbers", "Cost, transport weight, and manufacturing date", "Author name, publisher status, and country of origin"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Which type of instructional material relies completely on written or printed words as its primary vehicle for delivery?", 
+    a: ["Printed Materials (e.g., pamphlets, brochures)", "Demonstration Materials", "Audiovisual Resources", "Computer-Based Modules"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "When evaluating printed materials for patients, a primary clinical concern is ensuring the text matches the patient's:", 
+    a: ["Readability and literacy level", "Physical weight and biological age", "Historical digital technical competencies", "Preferred style of clinical dress"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Models, replicas, anatomical displays, and real equipment are classified under which category of instructional media?", 
+    a: ["Demonstration Materials", "Projected Learning Resources", "Audio Learning Resources", "Telecommunications Media"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "According to the data from the 'Learning Pyramid', information retention levels rise significantly when learners are:", 
+    a: ["Actively involved in learning (e.g., practicing, teaching others)", "Passively sitting through an extended reading session", "Purely observing a distant, unguided presentation", "Listening to a monotone audio broadcast without visuals"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Commercial videotapes, DVDs, and motion digital files are highly effective because they combine which two sensory elements?", 
+    a: ["Visual and auditory stimuli", "Tactile and olfactory feedback", "Textual and numerical equations", "Theoretical and historical chronologies"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "Computer Learning Resources are highly praised in modern healthcare education because they offer:", 
+    a: ["High interactivity, immediate feedback, and self-paced navigation", "An completely unmonitored environment with zero structure", "A complete replacement for all human clinical supervision requirements", "The lowest possible technology setup cost available to hospitals"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "What is a general principle of effectiveness when choosing any instructional material?", 
+    a: ["The material should complement, not completely replace, the instructor's teaching", "The material must always be the most expensive option on the market", "The media must contain at least 50 pages of textual references", "The resource should be selected based solely on its color palette"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "When choosing instructional materials, which criterion ensures that the material does not promote outdated or unsafe medical methods?", 
+    a: ["State of the evidence / currency of information", "Physical portability of the training device", "The specific brand of computer needed to run it", "Whether it fits standard library shelf dimensions"], 
+    marks: "1.00" 
+  },
+
+  // Chapter 14: Evaluation in Healthcare Education
+  { 
+    q: "Evaluation in healthcare education is formally defined as a systematic process that:", 
+    a: ["Gathers and interprets data to make judgments about worth or value", "Collects continuous initial screening parameters for diagnostics", "Measures the physical dimensions of hospital learning labs", "Purely tallies the total attendance rows during a morning lecture"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "What is the primary difference between an 'Assessment' and an 'Evaluation'?", 
+    a: ["Assessment gathers raw data; Evaluation interprets that data to make a formal judgment", "Assessment occurs at the absolute end; Evaluation is purely an initial baseline", "Assessment focuses only on costs; Evaluation focuses only on medical safety", "There is no difference; they are absolute synonyms in nursing curricula"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "An evaluation conducted during the instructional process to modify and improve ongoing teaching is called a:", 
+    a: ["Formative (Process) Evaluation", "Summative (Outcome) Evaluation", "Impact Evaluation", "Total Program Evaluation"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "A Summative Evaluation is specifically designed and scheduled to take place:", 
+    a: ["At the conclusion of an instructional activity to determine final outcomes", "Before the teaching plan is ever written by the nurse instructor", "Continuously every five minutes during a formal demonstration cycle", "Only when a severe student incident occurs within the clinic"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "According to the steps in evaluation, what must be explicitly established before any data collection tools are designed?", 
+    a: ["The specific purpose and scope of the evaluation", "The final budget surplus report of the educational department", "The preferred vacation schedules of the academic board", "The exact publication dates of all future textbooks"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "An evaluation that measures long-term structural changes in organizational practice or community health status is an:", 
+    a: ["Impact Evaluation", "Content Evaluation", "Process Screening", "Formative Checkpoint"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "In healthcare education evaluation designs, planners must always balance practical limitations against the strict desire for:", 
+    a: ["Methodological rigor and objectivity", "Subjective opinions and personal anecdotes", "The speed of completing the evaluation in under five minutes", "Utilizing a single unvalidated casual question sheet"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "What is considered a significant barrier to conducting effective evaluations in clinical settings?", 
+    a: ["Lack of time, resources, and clear evaluative expertise", "Having too many highly validated testing tools available", "Students possessing exceptional levels of intrinsic motivation", "The excessive simplicity of interpreting advanced multivariate statistics"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "When an educator selects an evaluation instrument, the tool must consistently yield the same results under identical conditions. This quality is called:", 
+    a: ["Reliability", "Portability", "Multidimensionality", "Subjectivity"], 
+    marks: "1.00" 
+  },
+  { 
+    q: "What is the vital final step of the evaluation process that ensures accountability and future educational development?", 
+    a: ["Reporting and utilizing the evaluation results to guide future practice", "Filing the data away in an encrypted folder never to be opened", "Verbally berating individuals who scored below the class average", "Discarding the written questionnaires to protect facility storage space"], 
+    marks: "1.00" 
+  }
+]
+
+    while(bank.length < 40) {
         bank.push({
             q: `Pharmacology & Core Clinical Nursing Practice Question depth block ${bank.length + 1}: Which nursing assessment has immediate priority?`,
             a: ["Assess airway patency and respiratory rate", "Review secondary diagnostic data", "Check institutional protocol logs", "Consult with pharmacy representatives"],
