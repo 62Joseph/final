@@ -25,7 +25,7 @@
         }
 
         #dashboard-container { display: block; }
-        #exam-start-page { display: none; height: 100vh; flex-direction: column; }
+        #exam-start-page { display: none; flex-direction: column; overflow: hidden; }
         #exam-interface-container { display: none; height: 100vh; background: #222; padding: 0; overflow: hidden; }
         #uploading-screen-container { display: none; min-height: 100vh; background: #1c1c1e; position: relative; } 
         #post-exam-dashboard { display: none; }
@@ -223,7 +223,13 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start; 
-            padding-bottom: 16px; 
+            padding-bottom: 0px; 
+            margin-bottom: 0px; 
+            cursor: pointer;
+        }
+
+        .exam-card.expanded .exam-header {
+            padding-bottom: 16px;
             border-bottom: 1px solid #3a3a3c; 
             margin-bottom: 18px; 
         }
@@ -241,6 +247,24 @@
             color: #aeaeb2;
             text-align: right;
             line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .arrow-toggle {
+            font-size: 14px;
+            color: #7c7c80;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s;
+            padding: 4px;
+        }
+
+        .exam-details.collapsed, 
+        .view-score.collapsed,
+        .btn-attempt-custom.collapsed { 
+            display: none !important; 
         }
 
         .exam-details {
@@ -283,6 +307,23 @@
             background: rgba(42, 101, 191, 0.05); 
         }
 
+        .btn-attempt-custom {
+            margin-top: 22px;
+            width: 100%;
+            padding: 13px; 
+            background: #2a65bf; 
+            border: none; 
+            border-radius: 10px;
+            color: #ffffff; 
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-attempt-custom:active {
+            background: #1e4b8f; 
+        }
+
         .hidden { display: none !important; }
 
         /* ===== Overlays & Modals ===== */
@@ -311,39 +352,111 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.65);
             display: flex; justify-content: center; align-items: center;
-            z-index: 2000; padding: 24px; 
+            z-index: 5000; padding: 24px; 
         }
 
         .modal-box {
             background: #2a2a2e; 
             border: 1px solid #3a3a3f;
-            border-radius: 12px; 
-            width: 100%; max-width: 320px;
-            padding: 38px 16px 16px;
+            border-radius: 4px; 
+            width: 100%; max-width: 400px;
+            padding: 0;
             text-align: center; position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
         }
 
-        .modal-icon {
-            position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
-            width: 56px; height: 56px; background: #2a65bf; 
-            border-radius: 50%; border: 3px solid #2a2a2e; outline: 2px solid #ffffff; 
+        .modal-header-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a65bf;
+            padding: 10px 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .modal-close-custom {
+            background: #ef4444;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+
+        .modal-body-custom {
+            padding: 20px;
+            background-color: #2c2c2e;
+        }
+
+        .modal-input-custom {
+            width: 100%;
+            padding: 12px;
+            background: #1c1c1e;
+            border: 1px solid #48484a;
+            border-radius: 4px;
+            color: white;
+            font-size: 15px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .modal-input-custom::placeholder {
+            color: #8e8e93;
+        }
+
+        .modal-verify-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-icon { display: none; }
+        .modal-title { display: none; }
+        .modal-text { display: none; }
+        .modal-input-group { display: none; }
+        .modal-btn-container { display: none; }
+
+        /* ===== Notification Modal (New Style - IMG_2794.PNG) ===== */
+        .notif-box {
+            background: #2a2a2e; 
+            border: 1px solid #3a3a3f;
+            border-radius: 8px; 
+            width: 100%; max-width: 340px;
+            padding: 48px 20px 20px;
+            text-align: center; position: relative;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        }
+
+        .notif-badge {
+            position: absolute; top: -32px; left: 50%; transform: translateX(-50%);
+            width: 64px; height: 64px; background: #2a65bf; 
+            border-radius: 50%; border: 3px solid #ffffff; outline: 1.5px solid #2a2a2e;
             display: flex; justify-content: center; align-items: center;
-            font-size: 26px; font-weight: bold; color: white;
+            font-size: 30px; font-weight: bold; color: white;
+            z-index: 10;
         }
 
-        .modal-title { font-size: 16px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
-        .modal-text { font-size: 13.5px; color: #e0e0e3; line-height: 1.6; margin-bottom: 20px; text-align: center; }
-        .modal-input-group { margin-bottom: 20px; text-align: left; }
-        .modal-input-group label { display: block; color: #aeaeb2; font-size: 13px; margin-bottom: 8px; }
-        .modal-input-group input {
-            width: 100%; padding: 12px; background: #1c1c1e; border: 1px solid #3a3a3c;
-            border-radius: 8px; color: white; font-size: 16px; outline: none;
+        .notif-title { font-size: 19px; font-weight: bold; color: #ffffff; margin-bottom: 18px; }
+        .notif-text { font-size: 16px; color: #ffffff; line-height: 1.6; margin-bottom: 25px; font-weight: 500; }
+        .notif-ok-btn { 
+            width: 100%; padding: 13px; background: #2a65bf; color: white; 
+            border: none; border-radius: 10px; font-size: 17px; font-weight: bold; cursor: pointer; 
         }
-
-        .modal-btn-container { display: flex; gap: 10px; }
-        .modal-btn { width: 100%; padding: 11px; background: #2a65bf; color: white; border: none; border-radius: 6px; font-size: 15px; cursor: pointer; font-weight: 500; }
-        .modal-btn.btn-secondary { background: #3a3a3c; color: #ffffff; }
 
         /* ===== Bottom Sheets ===== */
         .bottom-sheet-overlay {
@@ -385,12 +498,44 @@
         /* ===== Instructions Page ===== */
         .page-header { padding: 15px; display: flex; align-items: center; background-color: #2c2c2e; border-bottom: 1px solid #3a3a3c; }
         .back-arrow { font-size: 24px; margin-right: 15px; cursor: pointer; color: #ffffff; }
-        .detail-list { padding: 20px; flex-grow: 1; }
-        .detail-item { display: flex; flex-direction: column; margin-bottom: 20px; }
-        .detail-item .dt-label { color: #aeaeb2; font-size: 13px; margin-bottom: 5px; }
-        .detail-item .dt-value { font-size: 16px; color: #ffffff; font-weight: 500; }
-        .instructions-box { background-color: #2c2c2e; padding: 20px; border-radius: 8px; border: 1px solid #3a3a3c; height: 150px; color: #aeaeb2; font-size: 14px; margin-top: 8px; }
-        .footer-action { padding: 20px; background-color: #1c1c1e; }
+        .detail-list { padding: 20px; overflow-y: auto; }
+        
+        .detail-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 16px; 
+            margin-bottom: 20px; 
+            padding-bottom: 15px; 
+            border-bottom: 1px solid #2d2d30; 
+        }
+        
+        .detail-item:last-of-type { border-bottom: none; }
+
+        .detail-icon-box {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .detail-icon-box svg {
+            width: 20px;
+            height: 20px;
+            stroke: #aeaeb2;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .detail-info-box { display: flex; flex-direction: column; gap: 4px; }
+        .detail-info-box .dt-label { color: #aeaeb2; font-size: 13px; font-weight: 500; }
+        .detail-info-box .dt-value { font-size: 15px; color: #ffffff; font-weight: bold; }
+
+        .instructions-box { background-color: #2c2c2e; padding: 20px; border-radius: 8px; border: 1px solid #3a3a3c; height: 120px; color: #aeaeb2; font-size: 14px; margin-top: 12px; }
+        .footer-action { padding: 20px; background-color: #1c1c1e; position: absolute; bottom: 0; width: 100%; }
 
         @media (min-width: 1024px) { .content { max-width: 900px; } }
 
@@ -449,6 +594,9 @@
             padding: 6px 14px;
             flex-shrink: 0;
             width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .timer {
@@ -457,6 +605,27 @@
             font-weight: 600;
             letter-spacing: 0.5px;
             text-align: left;
+        }
+
+        .timer-icon-btn {
+            width: 34px;
+            height: 34px;
+            background: #0d1624;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .timer-icon-svg {
+            width: 20px;
+            height: 20px;
+            stroke: #ffffff;
+            stroke-width: 2.2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .header {
@@ -721,12 +890,12 @@
             border-top: 1px solid var(--footer-border);
         }
 
-        .btn-footer { border-radius: 6px; padding: 8px 24px; font-weight: 600; font-size: 13px; cursor: pointer; text-align: center; white-space: nowrap; }
+        .btn-footer { border-radius: 6px; padding: 8px 24px; font-weight: 600; font-size: 13px; cursor: pointer; text-align: center; white-space: nowrap; color: #ffffff !important; }
 
-        .btn-prev { background: transparent; border: 1.5px solid #2d3139; color: #4b5261; }
-        .btn-prev.active-btn { border-color: var(--text-primary); color: var(--text-primary); }
-        .btn-flag { background: transparent; border: 1.5px solid var(--text-primary); color: var(--text-primary); }
-        .btn-next { background: #3b82f6; border: none; color: #fff; padding: 8px 32px; }
+        .btn-prev { background: transparent; border: 1.5px solid #2d3139; }
+        .btn-prev.active-btn { border-color: #ffffff; }
+        .btn-flag { background: transparent; border: 1.5px solid #ffffff; }
+        .btn-next { background: #3b82f6; border: none; padding: 8px 32px; }
 
         /* =========================================
            4. شاشة ملخص الإجابات المحفوظة (Summary Sheet Modal)
@@ -769,6 +938,7 @@
         .summary-item-block.status-answered { background: #82cc6c; } 
         .summary-item-block.status-not-attempted { background: #3b82f6; }
         .summary-item-block.status-flagged { background: #f59e0b; }
+        .summary-item-block.status-skipped { background: #ef4444; }
 
         .summary-footer { margin-top: auto; display: flex; justify-content: center; padding: 20px 0 14px; flex-shrink: 0; }
         .btn-summary-end { background: #ef4444; border: none; color: #ffffff; padding: 12px 0; border-radius: 4px; font-size: 15px; font-weight: 600; cursor: pointer; width: 45%; text-align: center; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.25); }
@@ -872,19 +1042,24 @@
         </div>
 
         <div id="exams-container">
-            <div class="exam-card">
+            <div class="exam-card" onclick="toggleExamCard(this)">
                 <div class="exam-header">
                     <div class="exam-title">Final Exam</div>
-                    <div class="exam-date">07 Jun 2026<br>10:30 AM</div>
+                    <div class="exam-date">
+                        <div>
+                            <span style="color: #ffffff;">07 Jun 2026</span><br>10:30 AM
+                        </div>
+                        <span class="arrow-toggle">▼</span>
+                    </div>
                 </div>
-                <div class="exam-details">
+                <div class="exam-details collapsed">
                     <span>Course</span> <span class="value">Principles of Education for Nursing Practice</span>
                     <span>Duration</span> <span class="value">02:00:00</span>
                     <span>Proctored</span> <span class="value">No</span>
                     <span>Status</span> <span class="value status-Available">Available</span>
                     <span>Upload Status</span> <span class="value">-</span>
                 </div>
-                <button class="view-score" onclick="goToExamPage()">Attempt (Take Exam)</button>
+                <button class="btn-attempt-custom collapsed" onclick="event.stopPropagation(); goToExamPage()">Attempt (Take Exam)</button>
             </div>
         </div>
         
@@ -899,11 +1074,56 @@
             <span style="font-weight: bold; color: white;">Final Exam</span>
         </div>
         <div class="detail-list">
-            <div class="detail-item"><span>Course</span><span class="dt-value">Principles of Education for Nursing Practice</span></div>
-            <div class="detail-item"><span>Total Duration</span><span class="dt-value">02:00:00</span></div>
-            <div class="detail-item"><span>Remaining Duration</span><span class="dt-value" id="timer-display" style="color: #2a65bf;">02:00:00</span></div>
-            <div class="detail-item"><span>Language</span><span class="dt-value">English</span></div>
-            <div class="detail-item"><span>Proctored</span><span class="dt-value">No</span></div>
+            <div class="detail-item">
+                <div class="detail-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                </div>
+                <div class="detail-info-box">
+                    <span class="dt-label">Course</span>
+                    <span class="dt-value">Principles of Education for Nursing Practice</span>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-icon-box">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="detail-info-box">
+                    <span class="dt-label">Total Duration</span>
+                    <span class="dt-value">02:00:00</span>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-icon-box">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2 2"></path><path d="M5 3 2 6"></path><path d="M22 6 19 3"></path></svg>
+                </div>
+                <div class="detail-info-box">
+                    <span class="dt-label">Remaining Duration</span>
+                    <span class="dt-value" id="timer-display" style="color: #2a65bf;">02:00:00</span>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+                </div>
+                <div class="detail-info-box">
+                    <span class="dt-label">Language</span>
+                    <span class="dt-value">English</span>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path><path d="M7 14s1-1 5-1 5 1 5 1"></path><circle cx="12" cy="9" r="3"></circle></svg>
+                </div>
+                <div class="detail-info-box">
+                    <span class="dt-label">Proctored</span>
+                    <span class="dt-value">No</span>
+                </div>
+            </div>
+
             <div style="margin-top: 20px;">
                 <span style="font-weight: bold; font-size: 14px; color: white;">Instructions</span>
                 <div class="instructions-box">No Instructions Available.</div>
@@ -967,6 +1187,13 @@
 
         <div class="timer-bar">
             <div class="timer" id="countdownTimerText">02:00:00</div>
+            <div class="timer-icon-btn">
+                <svg class="timer-icon-svg" viewBox="0 0 24 24">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                    <path d="M12 7v5l4 2"></path>
+                </svg>
+            </div>
         </div>
         
         <div class="header">
@@ -1114,6 +1341,18 @@
             </svg>
             <svg class="icon-svg" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <svg class="icon-svg" viewBox="0 0 24 24" style="fill: none; stroke: #ffffff; stroke-width: 2.5;" onclick="openFilter()">
+                <line x1="2" y1="8" x2="22" y2="8"></line>
+                <circle cx="9" cy="8" r="2.5" style="fill: #ffffff; stroke: none;"></circle>
+                <line x1="2" y1="16" x2="22" y2="16"></line>
+                <circle cx="15" cy="16" r="2.5" style="fill: #ffffff; stroke: none;"></circle>
+            </svg>
+            <svg class="icon-svg" viewBox="0 0 24 24" onclick="openNotificationModal()">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
         </div>
     </div>
@@ -1133,19 +1372,24 @@
         </div>
 
         <div id="post-exams-container">
-            <div class="exam-card">
+            <div class="exam-card" onclick="toggleExamCard(this)">
                 <div class="exam-header">
                     <div class="exam-title">Final Exam</div>
-                    <div class="exam-date">07 Jun 2026<br>10:30 AM</div>
+                    <div class="exam-date">
+                        <div>
+                            <span style="color: #ffffff;">07 Jun 2026</span><br>10:30 AM
+                        </div>
+                        <span class="arrow-toggle">▼</span>
+                    </div>
                 </div>
-                <div class="exam-details">
+                <div class="exam-details collapsed">
                     <span>Course</span> <span class="value">Principles of Education for Nursing Practice</span>
                     <span>Duration</span> <span class="value">02:00:00</span>
                     <span>Proctored</span> <span class="value">No</span>
                     <span>Status</span> <span class="value status-ended">Exam Ended</span>
                     <span>Upload Status</span> <span class="value">Uploaded</span>
                 </div>
-                <button class="view-score" onclick="openResultsNotificationModal()">View Score</button>
+                <button class="view-score collapsed" onclick="event.stopPropagation(); openResultsNotificationModal()">View Score</button>
             </div>
         </div>
         
@@ -1155,19 +1399,36 @@
     </div>
 </div>
 
+<div id="confirm-modal-overlay" class="modal-overlay hidden">
+    <div class="notif-box">
+        <div class="notif-badge">i</div>
+        <div class="notif-title">Notification</div>
+        <div class="notif-text">Are you sure you want to finish exam?</div>
+        <div class="confirm-btn-container">
+            <button class="notif-ok-btn" style="margin-bottom: 12px;" onclick="proceedToUpload()">Yes</button>
+            <button class="notif-ok-btn" onclick="closeConfirmModal()">No</button>
+        </div>
+    </div>
+</div>
+
+<div id="notif-modal-overlay" class="modal-overlay hidden">
+    <div class="notif-box">
+        <div class="notif-badge">i</div>
+        <div class="notif-title" id="notif-custom-title">Notification</div>
+        <div class="notif-text" id="notif-custom-text">Exam Result is not published. Once your result is published, you will receive a notification.</div>
+        <button class="notif-ok-btn" onclick="closeNotifModal()">Ok</button>
+    </div>
+</div>
+
 <div id="score-modal" class="modal-overlay hidden">
     <div class="modal-box">
-        <div class="modal-icon" id="modal-badge-icon">i</div>
-        <div class="modal-title" id="modal-title-text">Notification</div>
-        <div class="modal-text" id="modal-body-text">Exam Result is not published. Once your result is published, you will receive a notification.</div>
-        
-        <div id="modal-password-group" class="modal-input-group hidden">
-            <label>Examination Password</label>
-            <input type="password" id="exam-password-input" placeholder="********">
+        <div class="modal-header-custom">
+            <span id="modal-custom-title">Verification</span>
+            <button class="modal-close-custom" onclick="closeModal()">X</button>
         </div>
-        
-        <div class="modal-btn-container" id="modal-buttons-container">
-            <button class="modal-btn" onclick="closeModal()">Ok</button>
+        <div class="modal-body-custom" id="modal-custom-body">
+            <input type="password" id="exam-password-input" class="modal-input-custom" placeholder="Examination Password">
+            <button class="modal-verify-btn" id="modal-custom-btn" onclick="verifyAndStart()">Verify</button>
         </div>
     </div>
 </div>
@@ -1218,15 +1479,49 @@
         setTimeout(() => { loading.classList.add('hidden'); }, 1000); 
     }
 
+    function toggleExamCard(card) {
+        const details = card.querySelector('.exam-details');
+        const btn = card.querySelector('.btn-attempt-custom') || card.querySelector('.view-score');
+        const arrow = card.querySelector('.arrow-toggle');
+        
+        if (card.classList.contains('expanded')) {
+            card.classList.remove('expanded');
+            details.classList.add('collapsed');
+            if (btn) btn.classList.add('collapsed');
+            if (arrow) arrow.textContent = '▼';
+        } else {
+            card.classList.add('expanded');
+            details.classList.remove('collapsed');
+            if (btn) btn.classList.remove('collapsed');
+            if (arrow) arrow.textContent = '▲';
+        }
+    }
+
     function toggleSwitch() {
         const toggleContainer = document.getElementById('toggle-container');
         const toggleText = document.getElementById('toggle-text');
+        const cards = document.querySelectorAll('#exams-container .exam-card');
+
         if (toggleContainer.classList.contains('active')) {
             toggleContainer.classList.remove('active');
             toggleText.textContent = 'Open All';
+            cards.forEach(card => {
+                card.classList.remove('expanded');
+                card.querySelector('.exam-details').classList.add('collapsed');
+                const btn = card.querySelector('.btn-attempt-custom') || card.querySelector('.view-score');
+                if (btn) btn.classList.add('collapsed');
+                card.querySelector('.arrow-toggle').textContent = '▼';
+            });
         } else {
             toggleContainer.classList.add('active');
             toggleText.textContent = 'Close All';
+            cards.forEach(card => {
+                card.classList.add('expanded');
+                card.querySelector('.exam-details').classList.remove('collapsed');
+                const btn = card.querySelector('.btn-attempt-custom') || card.querySelector('.view-score');
+                if (btn) btn.classList.remove('collapsed');
+                card.querySelector('.arrow-toggle').textContent = '▲';
+            });
         }
     }
 
@@ -1283,37 +1578,31 @@
     }
 
     function openNotificationModal() {
-        document.getElementById('modal-badge-icon').textContent = 'i';
-        document.getElementById('modal-title-text').textContent = 'Notification';
-        document.getElementById('modal-body-text').innerHTML = 'The exam portal is ready for evaluation.';
-        document.getElementById('modal-password-group').classList.add('hidden');
-        document.getElementById('modal-buttons-container').innerHTML = `<button class="modal-btn" onclick="closeModal()">Ok</button>`;
-        document.getElementById('score-modal').classList.remove('hidden');
+        document.getElementById('notif-custom-title').textContent = 'Notification';
+        document.getElementById('notif-custom-text').innerHTML = `
+            The QQ app was first launched at 02 Jun 2026 07:04:58 AM, with Device ID: 48F0A388-D0F6-4265-8E22-504A0D7714C9 and Timezone: Asia/Riyadh
+        `;
+        document.getElementById('notif-modal-overlay').classList.remove('hidden');
     }
 
     function openPasswordModal() {
-        document.getElementById('modal-badge-icon').textContent = '?';
-        document.getElementById('modal-title-text').textContent = 'Verification';
-        document.getElementById('modal-body-text').textContent = 'Please enter the examination password to proceed.';
-        document.getElementById('modal-password-group').classList.remove('hidden');
-        document.getElementById('exam-password-input').value = '';
-        document.getElementById('modal-buttons-container').innerHTML = `
-            <button class="modal-btn btn-secondary" onclick="closeModal()">Cancel</button>
-            <button class="modal-btn" onclick="verifyAndStart()">Verify</button>
+        document.getElementById('modal-custom-title').textContent = 'Verification';
+        document.getElementById('modal-custom-body').innerHTML = `
+            <input type="password" id="exam-password-input" class="modal-input-custom" placeholder="Examination Password">
+            <button class="modal-verify-btn" onclick="verifyAndStart()">Verify</button>
         `;
+        document.getElementById('exam-password-input').value = '';
         document.getElementById('score-modal').classList.remove('hidden');
     }
 
     function openResultsNotificationModal() {
-        document.getElementById('modal-badge-icon').textContent = 'i';
-        document.getElementById('modal-title-text').textContent = 'Notification';
-        document.getElementById('modal-body-text').textContent = 'Exam Result is not published. Once your result is published, you will receive a notification.';
-        document.getElementById('modal-password-group').classList.add('hidden');
-        document.getElementById('modal-buttons-container').innerHTML = `<button class="modal-btn" onclick="closeModal()">Ok</button>`;
-        document.getElementById('score-modal').classList.remove('hidden');
+        document.getElementById('notif-custom-title').textContent = 'Notification';
+        document.getElementById('notif-custom-text').textContent = 'Exam Result is not published. Once your result is published, you will receive a notification.';
+        document.getElementById('notif-modal-overlay').classList.remove('hidden');
     }
 
     function closeModal() { document.getElementById('score-modal').classList.add('hidden'); }
+    function closeNotifModal() { document.getElementById('notif-modal-overlay').classList.add('hidden'); }
     function openFilter() { document.getElementById('filter-overlay').classList.add('open'); }
     function closeFilter(event) { if (!event || event.target === document.getElementById('filter-overlay')) document.getElementById('filter-overlay').classList.remove('open'); }
     function selectFilterOption(element) { document.querySelectorAll('.filter-option').forEach(opt => opt.classList.remove('selected')); element.classList.add('selected'); }
@@ -1691,22 +1980,24 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
 
         const flagBtn = document.getElementById("examFlagBtn");
         if (q.flagged) {
-            flagBtn.style.borderColor = "#f59e0b";
-            flagBtn.style.color = "#f59e0b";
+            flagBtn.style.borderColor = "#ffffff";
+            flagBtn.style.color = "#ffffff";
             flagBtn.textContent = "Unflag";
         } else {
-            flagBtn.style.borderColor = "var(--text-primary)";
-            flagBtn.style.color = "var(--text-primary)";
+            flagBtn.style.borderColor = "#ffffff";
+            flagBtn.style.color = "#ffffff";
             flagBtn.textContent = "Flag";
         }
 
         const skipBtn = document.getElementById("examSkipBtn");
         if (q.skipped) {
-            skipBtn.style.borderColor = "#ef4444";
-            skipBtn.style.color = "#ef4444";
+            skipBtn.style.borderColor = "#ffffff";
+            skipBtn.style.color = "#ffffff";
+            skipBtn.textContent = "Unskip";
         } else {
-            skipBtn.style.borderColor = "var(--text-primary)";
-            skipBtn.style.color = "var(--text-primary)";
+            skipBtn.style.borderColor = "#ffffff";
+            skipBtn.style.color = "#ffffff";
+            skipBtn.textContent = "Skip";
         }
 
         drawSidebarNavigation();
@@ -1762,11 +2053,16 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
     function toggleDarkLightMode() {
         const toggleCheckbox = document.getElementById("toggle-checkbox");
         const app = document.getElementById("quizApp");
+        const themeIcon = document.getElementById("themeIcon");
         
         if (toggleCheckbox.checked) {
             app.removeAttribute("data-theme");
+            // أيقونة القمر لوضع الليل
+            themeIcon.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
         } else {
             app.setAttribute("data-theme", "light");
+            // أيقونة الشمس لوضع النهار
+            themeIcon.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
         }
         displayCurrentQuestion();
     }
@@ -1783,22 +2079,51 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
     };
 
     function confirmAndProceedToUploadScreen() {
+        document.getElementById('confirm-modal-overlay').classList.remove('hidden');
+    }
+
+    function proceedToUpload() {
+        document.getElementById('confirm-modal-overlay').classList.add('hidden');
         closeSummary();
         document.getElementById('exam-interface-container').style.display = 'none';
         document.getElementById('uploading-screen-container').style.display = 'block';
         startUploadSimulation(); 
     }
 
+    function closeConfirmModal() {
+        document.getElementById('confirm-modal-overlay').classList.add('hidden');
+    }
+
     document.getElementById("examFlagBtn").onclick = () => {
         const q = examQuestions[currentExamIndex];
         q.flagged = !q.flagged;
+        
+        // Notification logic
+        if (q.flagged) {
+            document.getElementById('notif-custom-title').textContent = 'Notification';
+            document.getElementById('notif-custom-text').textContent = 'Question marked for review!';
+            document.getElementById('notif-modal-overlay').classList.remove('hidden');
+        } else {
+            document.getElementById('notif-custom-title').textContent = 'Notification';
+            document.getElementById('notif-custom-text').textContent = 'Question un-marked!';
+            document.getElementById('notif-modal-overlay').classList.remove('hidden');
+        }
+        
         displayCurrentQuestion();
     };
 
     document.getElementById("examSkipBtn").onclick = () => {
         const q = examQuestions[currentExamIndex];
+        
+        // If question is answered, show notification instead of skipping
+        if (q.answer !== null) {
+            document.getElementById('notif-custom-title').textContent = 'Notification';
+            document.getElementById('notif-custom-text').textContent = 'You can not skip attempted question.';
+            document.getElementById('notif-modal-overlay').classList.remove('hidden');
+            return;
+        }
+
         q.skipped = !q.skipped;
-        if (q.skipped) q.answer = null; // Clear answer if skipped
         displayCurrentQuestion();
     };
 
@@ -1832,7 +2157,7 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
         const pctAside = document.getElementById("uploadPercentageAsideField");
         const modalOverlay = document.getElementById("uploadSuccessModalOverlay");
         
-        let duration = 6000; 
+        let duration = 3000; 
         let startTimestamp = null;
 
         function step(timestamp) {
@@ -1870,10 +2195,28 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
     function togglePostSwitch() {
         const container = document.getElementById('post-toggle-container');
         const txt = document.getElementById('post-toggle-text');
+        const cards = document.querySelectorAll('#post-exams-container .exam-card');
+
         if (container.classList.contains('active')) {
-            container.classList.remove('active'); txt.textContent = 'Open All';
+            container.classList.remove('active');
+            txt.textContent = 'Open All';
+            cards.forEach(card => {
+                card.classList.remove('expanded');
+                card.querySelector('.exam-details').classList.add('collapsed');
+                const btn = card.querySelector('.view-score');
+                if (btn) btn.classList.add('collapsed');
+                card.querySelector('.arrow-toggle').textContent = '▼';
+            });
         } else {
-            container.classList.add('active'); txt.textContent = 'Close All';
+            container.classList.add('active');
+            txt.textContent = 'Close All';
+            cards.forEach(card => {
+                card.classList.add('expanded');
+                card.querySelector('.exam-details').classList.remove('collapsed');
+                const btn = card.querySelector('.view-score');
+                if (btn) btn.classList.remove('collapsed');
+                card.querySelector('.arrow-toggle').textContent = '▲';
+            });
         }
     }
 
