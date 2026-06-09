@@ -602,6 +602,7 @@
         .sidebar-q-btn.answered { background: #22c55e !important; color: #fff; }
         .sidebar-q-btn.unanswered { background: #3b82f6; }
         .sidebar-q-btn.flagged { background: #f59e0b !important; color: #fff !important; }
+        .sidebar-q-btn.skipped { background: #ef4444 !important; color: #fff !important; }
 
         .sidebar-arrow-indicator {
     content: '';
@@ -624,6 +625,9 @@
 
 /* سهم السؤال الحالي إذا تم حلّه (أخضر) - السطر الجديد */
 .sidebar-q-container.active-q .sidebar-q-btn.answered + .sidebar-arrow-indicator { border-left-color: #22c55e !important; }
+
+/* سهم السؤال الحالي إذا تم تخطيه (أحمر) */
+.sidebar-q-container.active-q .sidebar-q-btn.skipped + .sidebar-arrow-indicator { border-left-color: #ef4444 !important; }
         
 
         .question-area {
@@ -754,6 +758,7 @@
         .box-not-attempted { background: #3b82f6; }
         .box-attempted { background: #22c55e; }
         .box-flagged { background: #f59e0b; }
+        .box-skipped { background: #ef4444; }
 
         .summary-divider { height: 1px; background: var(--option-border); margin: 10px 0 20px; }
         .items-title-red { color: #ef4444; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
@@ -943,6 +948,10 @@
                         <span>Flagged</span>
                         <div class="filter-color-box box-flagged"></div>
                     </div>
+                    <div class="filter-item">
+                        <span>Skipped</span>
+                        <div class="filter-color-box box-skipped"></div>
+                    </div>
                 </div>
 
                 <div class="summary-divider"></div>
@@ -1041,6 +1050,7 @@
         <div class="footer">
             <button type="button" class="btn-footer btn-prev" id="examPrevBtn">Previous</button>
             <button type="button" class="btn-footer btn-flag" id="examFlagBtn">Flag</button>
+            <button type="button" class="btn-footer btn-flag" id="examSkipBtn" style="margin-left: 10px;">Skip</button>
             <button type="button" class="btn-footer btn-next" id="examNextBtn">Next</button>
         </div>
     </div>
@@ -1547,6 +1557,7 @@
         options: it.a.slice(),
         answer: null, 
         flagged: false,
+        skipped: false,
         marks: it.marks
     }));
 
@@ -1588,6 +1599,8 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
 
             if (q.flagged) {
                 btn.className = "sidebar-q-btn flagged";
+            } else if (q.skipped) {
+                btn.className = "sidebar-q-btn skipped";
             } else if (q.answer !== null) {
                 btn.className = "sidebar-q-btn answered";
             } else {
@@ -1631,6 +1644,7 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
             
             radioInput.onchange = () => {
                 q.answer = i;
+                q.skipped = false; // Reset skipped if answered
                 document.querySelectorAll('.exam-option-item').forEach(el => {
                     el.classList.remove('selected');
                 });
@@ -1679,9 +1693,20 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
         if (q.flagged) {
             flagBtn.style.borderColor = "#f59e0b";
             flagBtn.style.color = "#f59e0b";
+            flagBtn.textContent = "Unflag";
         } else {
             flagBtn.style.borderColor = "var(--text-primary)";
             flagBtn.style.color = "var(--text-primary)";
+            flagBtn.textContent = "Flag";
+        }
+
+        const skipBtn = document.getElementById("examSkipBtn");
+        if (q.skipped) {
+            skipBtn.style.borderColor = "#ef4444";
+            skipBtn.style.color = "#ef4444";
+        } else {
+            skipBtn.style.borderColor = "var(--text-primary)";
+            skipBtn.style.color = "var(--text-primary)";
         }
 
         drawSidebarNavigation();
@@ -1698,6 +1723,8 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
 
             if (q.flagged) {
                 itemBlock.classList.add("status-flagged"); 
+            } else if (q.skipped) {
+                itemBlock.classList.add("status-skipped"); 
             } else if (q.answer !== null) {
                 itemBlock.classList.add("status-answered"); 
             } else {
@@ -1765,6 +1792,13 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
     document.getElementById("examFlagBtn").onclick = () => {
         const q = examQuestions[currentExamIndex];
         q.flagged = !q.flagged;
+        displayCurrentQuestion();
+    };
+
+    document.getElementById("examSkipBtn").onclick = () => {
+        const q = examQuestions[currentExamIndex];
+        q.skipped = !q.skipped;
+        if (q.skipped) q.answer = null; // Clear answer if skipped
         displayCurrentQuestion();
     };
 
