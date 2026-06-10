@@ -944,14 +944,15 @@
             justify-content: center;
         }
 
-        .btn-prev { background: transparent; border: 1.5px solid #2d3139; flex: 1.1; }
+        .btn-prev { background: transparent; border: 1.5px solid #2d3139; flex: 1.3; }
         .btn-prev.active-btn { border-color: #ffffff; }
-        .btn-flag { background: transparent; border: 1.5px solid #ffffff; }
-        .btn-next { background: #3b82f6; border: none; flex: 1; }
+        .btn-flag { background: transparent; border: 1.5px solid #ffffff; flex: 0.75; padding: 10px 1px; }
+        .btn-next { background: #3b82f6; border: none; flex: 1.3; }
 
         @media (max-width: 400px) {
-            .footer { padding: 10px 4px 32px; gap: 4px; }
-            .btn-footer { font-size: 11px; padding: 10px 1px; }
+            .footer { padding: 10px 4px 32px; gap: 3px; }
+            .btn-footer { font-size: 10.5px; }
+            .btn-flag { flex: 0.7; }
         }
 
         /* =========================================
