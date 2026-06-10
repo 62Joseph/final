@@ -2119,7 +2119,7 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
         if(examSystemInitialized) return;
         examSystemInitialized = true;
 
-        let remainSeconds = 120 * 60; 
+        let remainSeconds = 180 * 60; 
         setInterval(() => {
             if (remainSeconds > 0) { remainSeconds--; examTimeUsedSeconds++; }
             const hrs = Math.floor(remainSeconds / 3600).toString().padStart(2, '0');
