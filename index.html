@@ -1060,7 +1060,7 @@
             </div>
             <div class="user-text">
                 <span>Welcome</span>
-                <span>MOHAMMED HUSSAIN HAKMI</span>
+                <span>yousef abdulrhman saud alhodaib</span>
             </div>
         </div>
 
@@ -1259,7 +1259,7 @@
             <div class="student-row">
                 <div>
                     <div class="student-name-label">Student Name</div>
-                    <div class="student-name">MOHAMMED HUSSAIN HAKMI</div>
+                    <div class="student-name">yousef abdulrhman saud alhodaib</div>
                 </div>
                 <div class="header-buttons">
                     <div id="hiddenSecretPasswordDisplay"></div>
@@ -1391,7 +1391,7 @@
             </div>
             <div class="user-text">
                 <span>Welcome</span>
-                <span>MOHAMMED HUSSAIN HAKMI</span>
+                <span>yousef abdulrhman saud alhodaib</span>
             </div>
         </div>
         <div class="icons">
@@ -1518,7 +1518,7 @@
                 </div>
                 <div class="profile-info-text">
                     <span class="welcome-lbl">Welcome</span>
-                    <span class="name-lbl">MOHAMMED HUSSAIN HAKMI</span>
+                    <span class="name-lbl">yousef abdulrhman saud alhodaib</span>
                 </div>
             </div>
             <button class="signout-btn" onclick="closeProfileSheet(null)">Sign out</button>
@@ -1648,7 +1648,7 @@
     }
 
     function startDashboardTimer() {
-        let hours = 3, minutes = 20, seconds = 0;
+        let hours = 2, minutes = 0, seconds = 0;
         const display = document.getElementById('timer-display');
         if(dashboardTimerInterval) clearInterval(dashboardTimerInterval);
 
@@ -1820,7 +1820,7 @@
     }
 
     let currentExamIndex = 0; 
-    let examTimeTotalMinutes = 200;
+    let examTimeTotalMinutes = 120;
     let examTimeUsedSeconds = 0; 
     let textScaleValue = 1.0;
 
@@ -2119,7 +2119,7 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
         if(examSystemInitialized) return;
         examSystemInitialized = true;
 
-        let remainSeconds = 200 * 60; 
+        let remainSeconds = 120 * 60; 
         setInterval(() => {
             if (remainSeconds > 0) { remainSeconds--; examTimeUsedSeconds++; }
             const hrs = Math.floor(remainSeconds / 3600).toString().padStart(2, '0');
