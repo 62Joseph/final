@@ -1311,7 +1311,7 @@
 
             <div class="progress-section">
                 <div class="progress-row">
-                    <span class="progress-label" id="itemsCountLabel">Items 0 / 50</span>
+                    <span class="progress-label" id="itemsCountLabel">Items 0 / 30</span>
                     <div class="progress-track">
                         <div class="progress-bar" id="itemsProgressBarFill"></div>
                     </div>
@@ -1814,54 +1814,457 @@
     }
 
     const bank = [
-  { "q": "What does the calculated odds ratio (OR) indicate in the artificial sweetener and bladder cancer study?", "a": ["There is no association between using artificial sweeteners and bladder cancer.", "People who use artificial sweeteners are more likely to develop bladder cancer compared to those who do not", "People who use artificial sweeteners are less likely to develop bladder cancer compared to those who do not", "The risk of bladder cancer is the same for both groups"], "marks": "1.00" },
-  { "q": "What is the calculated odds ratio (OR) for the association between artificial sweetener use and bladder cancer in the provided table?", "a": ["3", "0,8", "2,3", "1,02"], "marks": "1.00" },
-  { "q": "Based on the provided asthma study data, what is the exposure rate among the control group?", "a": ["8%", "28%", "62%", "35%"], "marks": "1.00" },
-  { "q": "What is the Midterm322 interpretation of the results regarding smoking and asthma in the provided case-control study?", "a": ["Smoking has no effects on Asthma", "Smoking equal effects on Asthma", "Smoking has less effects on Asthma", "Smoking has more effects on Asthma"], "marks": "1.00" },
-  { "q": "Based on the asthma data table, what is the calculated odds ratio (OR)?", "a": [".19", "4.34", "2.875 (2.87)", "3"], "marks": "1.00" },
-  { "q": "Based on the asthma data table, what is the exposure rate among cases?", "a": ["60%", "20%", "50%", "45%"], "marks": "1.00" },
-  { "q": "What would interviewer bias look like in the bladder cancer study?", "a": ["Both groups receive the same questions in the same way.", "Interviewers may ask more questions if they know someone has cancer.", "People with bladder cancer may lie about their diet.", "The interviewer allows personal opinions to influence how questions are explained."], "marks": "1.00" },
-  { "q": "What is the primary aim of a case-control study?", "a": ["See how common a disease is right now.", "Prove what causes disease.", "Count new disease cases.", "Test a hypothesis about a possible cause of a disease."], "marks": "1.00" },
-  { "q": "How would recall bias affect the artificial sweetener study?", "a": ["People with cancer may better remember of using sweeteners than people without cancer", "The people in the study were selected randomly", "People with bladder cancer may lie about their diet.", "People who use artificial sweeteners might forget about their diet."], "marks": "1.00" },
-  { "q": "In a cohort study, what is primarily measured over time?", "a": ["Incidence of disease", "Risk factors of disease", "Severity of disease symptoms", "Prevalence of disease"], "marks": "1.00" },
-  { "q": "What is the key characteristic of a cohort study?", "a": ["Participants are categorized based on exposure", "Participants are selected based on both exposure and disease", "Participants are categorized based on disease status", "Participants are randomly assigned to exposure groups"], "marks": "1.00" },
-  { "q": "A study found that regular sunscreen users have a relative risk of 0.7 for skin cancer. This means:", "a": ["No chance of getting skin cancer.", "A lower risk of skin cancer.", "A higher risk of skin cancer.", "The same risk of skin cancer."], "marks": "1.00" },
-  { "q": "What is a significant challenge in conducting a cohort study?", "a": ["It cannot account for confounding variables", "It cannot be used to study rare exposures", "It does not provide a direct measure of incidence", "Loss of follow-up participants (drop-outs) which may lead to bias"], "marks": "1.00" },
-  { "q": "In a cohort study with 300 smokers (30 cancer cases) and 300 non-smokers (3 cancer cases), what is the relative risk (RR)?", "a": ["3", "5", "15", "10"], "marks": "1.00" },
-  { "q": "What does an attributable risk (AR) value of 8% imply in a cohort study?", "a": ["8% of the disease incidence in the exposed group is due to the exposure", "8% of the population could prevent the disease by removing the exposure", "The risk of disease in the exposed group is 8%", "8% of the population is at risk of developing the disease"], "marks": "1.00" },
-  { "q": "Why is a highly specific screening test important?", "a": ["It decreases the cost of treatment after diagnosis.", "It increases the cultural acceptability of the screening procedure.", "It reduces false positives and unnecessary follow-up tests.", "It ensures all individuals with the disease are identified."], "marks": "1.00" },
-  { "q": "A screening test on 100 individuals (40 without disease): 35 tested negative, 5 tested positive. What is the specificity?", "a": ["0.35", "0.583", "0.567", "0.875"], "marks": "1.00" },
-  { "q": "Which of the following best describes selective screening?", "a": ["Conducting mammograms only for women aged 50 and above due to higher risk.", "Offering a blood pressure and glucose test to all factory workers during a health campaign.", "Measuring blood pressure during a regular clinic visit for an unrelated complaint.", "Testing all newborns for multiple genetic disorders using a single blood sample."], "marks": "1.00" },
-  { "q": "Which of the following scenarios illustrates opportunistic screening?", "a": ["All pregnant women are offered genetic testing during the first trimester.", "A smoker aged 60 is invited for a lung cancer screening based on risk profile.", "A national campaign testing all school children for vision problems.", "A patient visits a clinic for a flu shot, and the doctor screens for high blood pressure."], "marks": "1.00" },
-  { "q": "Based on the Tuberculosis table, what is the Negative Predictive Value (NPV) of the test?", "a": ["90%", "81.8%", "18.2%", "20%"], "marks": "1.00" },
-  { "q": "Based on the Tuberculosis table, what is the Positive Predictive Value (PPV) of the screening test?", "a": ["72.7%", "88.9%", "80%", "22.2%"], "connected_from_prev": true, "marks": "1.00" },
-  { "q": "Which of the following best defines sensitivity in the context of screening tests?", "a": ["The degree to which a test is cost-effective in mass populations.", "The ability of a test to correctly identify those who do not have the disease.", "The degree of public acceptance of a screening test.", "The ability of a test to correctly identify those who have the disease."], "marks": "1.00" },
-  { "q": "A thermometer always shows 2 degrees higher than the actual temperature. This means:", "a": ["The thermometer is reliable but not valid.", "The thermometer is neither reliable nor valid.", "The thermometer has high validity but low reliability.", "The thermometer is both valid and reliable."], "marks": "1.00" },
-  { "q": "Which of the following best distinguishes screening from diagnosis?", "a": ["Diagnosis is performed only on healthy individuals.", "Screening identifies individuals at risk; diagnosis confirms the presence of disease.", "Screening is used after the diagnosis is confirmed.", "Screening requires expensive and invasive procedures."], "marks": "1.00" },
-  { "q": "Which is a necessary criterion for an effective screening program, according to the WHO?", "a": ["Treatment should begin only after symptoms appear", "The screening test must be highly technical.", "The disease should have a detectable latent or pre-symptomatic stage", "The disease must have a 100% fatality rate"], "marks": "1.00" },
-  { "q": "If the subject and observer are both unaware about the nature of testing, which design is utilized?", "a": ["Single masked study", "Triple masked study", "Double masked study", "Quadruple masked study"], "marks": "1.00" },
-  { "q": "From a clinical research perspective, what was a key scientific reason for the debate surrounding COVID-19 vaccine approval?", "a": ["Pharmaceutical companies kept all clinical trial data confidential", "Emergency authorization was granted before complete long-term safety data could be collected.", "Most trial participants withdrew due to severe side effects during testing.", "Vaccines were only tested on healthy young adults, excluding high-risk groups."], "marks": "1.00" },
-  { "q": "What fundamentally distinguishes experimental studies from observational studies in public health research?", "a": ["Producing faster results than other study designs", "Requiring smaller sample sizes to achieve valid conclusions", "Using qualitative rather than quantitative data collection methods", "Involving direct manipulation of study variables and intervention"], "marks": "1.00" },
-  { "q": "If a patient participates in a randomized clinical trial, what legal document provides safeguards?", "a": ["Signed contract", "List of medical activities", "Informed consent", "Volunteer payment schedule"], "marks": "1.00" },
-  { "q": "Which choice best exemplifies an experimental study's design of proving causation?", "a": ["High carbohydrate diet and poor activities contribute largely on diabetes", "Communicable diseases like Tuberculosis have long treatment period", "Daily vitamin D supplementation reduces fracture risk in elderly adults", "Common household insects can bring disease into humans"], "marks": "1.00" },
-  { "q": "After pre-clinical trials, at which stage do you assess for the efficacy and safety issues in human testing?", "a": ["Phase 4", "Phase 2", "Phase 3", "Phase 1"], "marks": "1.00" },
-  { "q": "Which statement best describes the purpose of randomization in experimental study design?", "a": ["Participants have an equal probability of being assigned to any study group", "Researchers assign subjects to groups based on their characteristics", "It removes the need to include a control group in the study", "It ensures all study groups receive the same intervention"], "marks": "1.00" },
-  { "q": "In a randomized controlled clinical trial, to which group is the new medication administered?", "a": ["Unknown to all participants", "Both treatment and control groups", "Control group", "Treatment group"], "marks": "1.00" },
-  { "q": "In experimental studies during the COVID-19 pandemic, what did the framework's ultimate contribution focus on?", "a": ["The value of preventive and therapeutic measures.", "The etiology of COVID-19 disease.", "The evaluation of newly implemented health services.", "Production of new medications including vaccines."], "marks": "1.00" },
-  { "q": "Using the provided treatment/control table data (Treatment 25/150, Control 75/2575), what is the Relative Risk value?", "a": ["0.75", "0.57", "57.222", "5.7222"], "marks": "1.00" },
-  { "q": "What could the 'web of causation' mean to a nurse as an educator about a specific disease?", "a": ["There are many factors that could give rise to the T2DM.", "As there are many factors, there are many ways to management", "Different possible sources of treatment may be based on the figure.", "Many doctors could present different diagnosis"], "marks": "1.00" },
-  { "q": "A seven times greater risk of diabetes in obese people compared to healthy weight indicates what type of association?", "a": ["Negative", "Non-exist.", "Positive", "Weak"], "marks": "1.00" },
-  { "q": "Which of the following is true about statistical inference?", "a": ["It ensures that every member of the population is included in the sample.", "It uses data from a scientific sample to make conclusions about a population.", "It involves organizing and summarizing data without making predictions.", "It requires descriptive measures from the entire population."], "marks": "1.00" },
-  { "q": "For the data: 2, 6, 3, 4, 8, 4, 5, 3, 6, 4, what is the mean, median, and mode?", "a": ["Mean: 4.2, Median: 4.5, Mode: 3.0", "Mean: 4.2, Median: 4.5, Mode: 4.0", "Mean: 4.5, Median: 4.0, Mode: 4.0", "Mean: 4.5, Median: 4.0, Mode: 3.0"], "marks": "1.00" },
-  { "q": "Which of the following examples represents an ordinal scale?", "a": ["Ranking students in a class as excellent, good, and poor.", "Categorizing individuals based on blood type (A, B, AB, O).", "Assigning a patient number to identify hospital records.", "Measuring body temperature in degrees Celsius."], "marks": "1.00" }
-]
-    while(bank.length < 40) {
-        bank.push({
-            q: `Pharmacology & Core Clinical Nursing Practice Question depth block ${bank.length + 1}: Which nursing assessment has immediate priority?`,
-            a: ["Assess airway patency and respiratory rate", "Review secondary diagnostic data", "Check institutional protocol logs", "Consult with pharmacy representatives"],
-            marks: "1.00"
-        });
+  {
+    "q": "Which statement best defines epidemiology?",
+    "a": [
+      "The study of the distribution and determinants of health-related states in populations and its application to control health problems",
+      "The study of drug effects without reference to populations",
+      "The laboratory identification of microorganisms only",
+      "The treatment of disease in individual patients only"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 1,
+      "slide": 2
     }
+  },
+  {
+    "q": "Which set of components makes up the epidemiologic triad?",
+    "a": [
+      "Agent, host, and environment",
+      "Incidence, prevalence, and mortality",
+      "Person, place, and time",
+      "Screening, diagnosis, and rehabilitation"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 1,
+      "slide": 26
+    }
+  },
+  {
+    "q": "Immunization before a disease develops is an example of which level of prevention?",
+    "a": [
+      "Tertiary prevention",
+      "Secondary prevention",
+      "Rehabilitation",
+      "Primary prevention"
+    ],
+    "correct": 3,
+    "marks": "1.00",
+    "source": {
+      "lecture": 1,
+      "slide": 9
+    }
+  },
+  {
+    "q": "Screening to detect an existing disease early is an example of which level of prevention?",
+    "a": [
+      "Eradication",
+      "Secondary prevention",
+      "Tertiary prevention",
+      "Primary prevention"
+    ],
+    "correct": 1,
+    "marks": "1.00",
+    "source": {
+      "lecture": 1,
+      "slide": 9
+    }
+  },
+  {
+    "q": "What distinguishes an epidemic from the usual background occurrence of a disease?",
+    "a": [
+      "The disease has been permanently eradicated worldwide",
+      "The number of cases clearly exceeds what is normally expected in the community",
+      "The disease occurs only occasionally with no consistent pattern",
+      "The disease occurs at its habitual background level"
+    ],
+    "correct": 1,
+    "marks": "1.00",
+    "source": {
+      "lecture": 1,
+      "slide": 30
+    }
+  },
+  {
+    "q": "How does herd immunity help protect susceptible individuals?",
+    "a": [
+      "A high proportion of immune people reduces opportunities for transmission to susceptible people",
+      "It increases the number of susceptible people",
+      "It guarantees that all infected people immediately recover",
+      "It requires every person in the population to be immune"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 1,
+      "slide": 37
+    }
+  },
+  {
+    "q": "What is the incubation period?",
+    "a": [
+      "The period from treatment initiation to hospital discharge",
+      "The time from symptom onset to complete recovery",
+      "The interval between diagnosis and death",
+      "The interval between infection and the onset of clinical illness"
+    ],
+    "correct": 3,
+    "marks": "1.00",
+    "source": {
+      "lecture": 2,
+      "slide": 7
+    }
+  },
+  {
+    "q": "Which description identifies preclinical disease?",
+    "a": [
+      "Disease that is not clinically apparent and is not destined to become clinically apparent",
+      "Disease that is not yet clinically apparent but is destined to become clinically apparent",
+      "Disease that has completely resolved after treatment",
+      "Disease with signs and symptoms already present"
+    ],
+    "correct": 1,
+    "marks": "1.00",
+    "source": {
+      "lecture": 2,
+      "slide": 5
+    }
+  },
+  {
+    "q": "Among 200 patients with an acute disease, 20 die from that disease during follow-up. What is the case-fatality percentage?",
+    "a": [
+      "10%",
+      "20%",
+      "1%",
+      "90%"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 2,
+      "slide": 14
+    }
+  },
+  {
+    "q": "What does five-year survival measure?",
+    "a": [
+      "The proportion of patients alive five years after diagnosis or the start of treatment",
+      "The proportion of the general population diagnosed within five years",
+      "The average age at diagnosis among all patients",
+      "The number of new cases per person-year"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 2,
+      "slide": 15
+    }
+  },
+  {
+    "q": "What does a median survival time of 18 months indicate?",
+    "a": [
+      "The mean survival time must equal 18 months",
+      "Only 18% of patients survive beyond one month",
+      "Every patient survives exactly 18 months",
+      "The estimated survival probability reaches 50% at 18 months"
+    ],
+    "correct": 3,
+    "marks": "1.00",
+    "source": {
+      "lecture": 2,
+      "slide": 26
+    }
+  },
+  {
+    "q": "Observed survival in patients with a disease is 60%, while expected survival without the disease is 80%. What is relative survival?",
+    "a": [
+      "133.3%",
+      "60%",
+      "75%",
+      "20%"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 2,
+      "slide": 27
+    }
+  },
+  {
+    "q": "Which activity is an essential part of public health surveillance?",
+    "a": [
+      "Ongoing systematic collection, analysis, interpretation, and timely dissemination of health data",
+      "Collecting data without analyzing or sharing them",
+      "Providing treatment without collecting population data",
+      "A single patient examination with no further reporting"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 3,
+      "slide": 4
+    }
+  },
+  {
+    "q": "Which statement best describes passive surveillance?",
+    "a": [
+      "It is generally more expensive than active surveillance",
+      "It guarantees complete detection of all cases",
+      "It uses routine reports or available data and may suffer from underreporting",
+      "It always recruits dedicated staff to actively search for every case"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 3,
+      "slide": 5
+    }
+  },
+  {
+    "q": "A closed cohort contains 1,000 disease-free people at baseline. During one year, 50 develop the disease and everyone is followed. What is the one-year cumulative incidence?",
+    "a": [
+      "0.5%",
+      "5%",
+      "20%",
+      "50%"
+    ],
+    "correct": 1,
+    "marks": "1.00",
+    "source": {
+      "lecture": 3,
+      "slide": 12
+    }
+  },
+  {
+    "q": "Which denominator is used to calculate an incidence rate when follow-up time differs between participants?",
+    "a": [
+      "Only the number of participants who become ill",
+      "The total number of deaths from all causes",
+      "Total person-time at risk",
+      "All existing cases at a single point in time"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 3,
+      "slide": 14
+    }
+  },
+  {
+    "q": "At a survey conducted on a specific day, 120 of 2,000 residents have asthma. What is the point prevalence?",
+    "a": [
+      "16.7%",
+      "12%",
+      "6%",
+      "0.6%"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 3,
+      "slide": 21
+    }
+  },
+  {
+    "q": "At a meal, 80 people eat a particular food and 20 of them become ill. What is the food-specific attack rate?",
+    "a": [
+      "4%",
+      "20%",
+      "25%",
+      "80%"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 3,
+      "slide": 31
+    }
+  },
+  {
+    "q": "What denominator is used for the annual all-cause mortality rate?",
+    "a": [
+      "The number of people with a particular disease",
+      "The number of hospital admissions during the year",
+      "The population size at midyear",
+      "The total number of deaths during the year"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 4,
+      "slide": 10
+    }
+  },
+  {
+    "q": "A population of 100,000 at midyear has 800 deaths during the year. What is the annual mortality rate per 1,000 population?",
+    "a": [
+      "80 deaths per 1,000",
+      "8 deaths per 1,000",
+      "800 deaths per 1,000",
+      "0.8 deaths per 1,000"
+    ],
+    "correct": 1,
+    "marks": "1.00",
+    "source": {
+      "lecture": 4,
+      "slide": 10
+    }
+  },
+  {
+    "q": "Of 500 deaths from all causes, 125 are due to cardiovascular disease. What is proportionate mortality from cardiovascular disease?",
+    "a": [
+      "75%",
+      "12.5%",
+      "4%",
+      "25%"
+    ],
+    "correct": 3,
+    "marks": "1.00",
+    "source": {
+      "lecture": 4,
+      "slide": 13
+    }
+  },
+  {
+    "q": "When can mortality rates provide a good approximation of disease incidence?",
+    "a": [
+      "Whenever the disease is common, regardless of its severity or duration",
+      "When almost all patients recover and no deaths occur",
+      "When case-fatality is low and disease duration is long",
+      "When case-fatality is high and disease duration is short"
+    ],
+    "correct": 3,
+    "marks": "1.00",
+    "source": {
+      "lecture": 4,
+      "slide": 12
+    }
+  },
+  {
+    "q": "Using age 75 as the reference, how many years of potential life are lost when a person dies at age 30?",
+    "a": [
+      "75 years",
+      "30 years",
+      "105 years",
+      "45 years"
+    ],
+    "correct": 3,
+    "marks": "1.00",
+    "source": {
+      "lecture": 4,
+      "slide": 17
+    }
+  },
+  {
+    "q": "Why is age adjustment useful when comparing mortality between populations?",
+    "a": [
+      "It ensures that every population has the same number of people",
+      "It reduces the effect of differences in population age structure on the comparison",
+      "It replaces the need to record deaths",
+      "It converts proportionate mortality directly into incidence"
+    ],
+    "correct": 1,
+    "marks": "1.00",
+    "source": {
+      "lecture": 4,
+      "slide": 27
+    }
+  },
+  {
+    "q": "Descriptive epidemiology characterizes disease distribution using which dimensions?",
+    "a": [
+      "Person, place, and time",
+      "Sensitivity, specificity, and predictive value",
+      "Treatment, dose, and response only",
+      "Agent, host, and environment only"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 5,
+      "slide": 8
+    }
+  },
+  {
+    "q": "A clinician describes an unusual disease presentation in one patient. Which study design is this?",
+    "a": [
+      "Case report",
+      "Randomized trial",
+      "Ecological study",
+      "Case series"
+    ],
+    "correct": 0,
+    "marks": "1.00",
+    "source": {
+      "lecture": 5,
+      "slide": 10
+    }
+  },
+  {
+    "q": "What is an important limitation of a case series?",
+    "a": [
+      "It cannot describe the clinical course of a disease",
+      "It measures only population-level correlations",
+      "It requires random assignment to treatment",
+      "It generally lacks a comparison group"
+    ],
+    "correct": 3,
+    "marks": "1.00",
+    "source": {
+      "lecture": 5,
+      "slide": 12
+    }
+  },
+  {
+    "q": "What is the unit of analysis in an ecological study?",
+    "a": [
+      "An individual patient only",
+      "A single tissue sample",
+      "A population or group",
+      "A randomly assigned treatment dose"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 5,
+      "slide": 14
+    }
+  },
+  {
+    "q": "Why can a cross-sectional study have difficulty establishing whether an exposure preceded disease?",
+    "a": [
+      "The investigator always assigns the exposure",
+      "Exposure and disease are assessed simultaneously",
+      "Disease status is never measured",
+      "Participants are always followed from birth"
+    ],
+    "correct": 1,
+    "marks": "1.00",
+    "source": {
+      "lecture": 5,
+      "slide": 18
+    }
+  },
+  {
+    "q": "In a cross-sectional sample, 10 of 40 smokers and 8 of 160 non-smokers have coronary heart disease. What is CHD prevalence among smokers?",
+    "a": [
+      "5%",
+      "9%",
+      "25%",
+      "20%"
+    ],
+    "correct": 2,
+    "marks": "1.00",
+    "source": {
+      "lecture": 5,
+      "slide": 23
+    }
+  }
+];
 
     let currentExamIndex = 0; 
     let examTimeTotalMinutes = 120;
@@ -1872,6 +2275,7 @@
         id: i + 1,
         text: it.q,
         options: it.a.slice(),
+        correctAnswer: it.correct,
         answer: null, 
         flagged: false,
         skipped: false,
