@@ -1311,7 +1311,7 @@
 
             <div class="progress-section">
                 <div class="progress-row">
-                    <span class="progress-label" id="itemsCountLabel">Items 0 / 30</span>
+                    <span class="progress-label" id="itemsCountLabel">Items 0 / 40</span>
                     <div class="progress-track">
                         <div class="progress-bar" id="itemsProgressBarFill"></div>
                     </div>
@@ -1345,7 +1345,7 @@
                     <div class="meta-info">
                         <span id="currentQuestionIdLabel">Q.1</span>
                         <span id="currentQuestionTypeLabel">Multi Choice</span>
-                        <span id="currentQuestionMarksLabel">Marks: 0.60</span>
+                        <span id="currentQuestionMarksLabel">Marks: 0.50</span>
                     </div>
                     <div class="meta-divider"></div>
                     <div class="controls-row">
@@ -1706,24 +1706,12 @@
     }
 
     function startDashboardTimer() {
-        let hours = 2, minutes = 0, seconds = 0;
-        const display = document.getElementById('timer-display');
-        if(dashboardTimerInterval) clearInterval(dashboardTimerInterval);
-
-        dashboardTimerInterval = setInterval(() => {
-            if (seconds > 0) seconds--;
-            else {
-                if (minutes > 0) { minutes--; seconds = 59; }
-                else {
-                    if (hours > 0) { hours--; minutes = 59; seconds = 59; }
-                    else clearInterval(dashboardTimerInterval);
-                }
-            }
-            display.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }, 1000);
+        if (dashboardTimerInterval) clearInterval(dashboardTimerInterval);
+        updateExamClock();
+        dashboardTimerInterval = setInterval(updateExamClock, 1000);
     }
 
-    function openNotificationModal() {
+        function openNotificationModal() {
         document.getElementById('notif-custom-title').textContent = 'Notification';
         document.getElementById('notif-custom-text').innerHTML = `
             The QQ app was first launched at 02 Jun 2026 07:04:58 AM, with Device ID: 48F0A388-D0F6-4265-8E22-504A0D7714C9 and Timezone: Asia/Riyadh
@@ -1823,7 +1811,7 @@
       "The treatment of disease in individual patients only"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 1,
       "slide": 2
@@ -1838,7 +1826,7 @@
       "Screening, diagnosis, and rehabilitation"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 1,
       "slide": 26
@@ -1853,7 +1841,7 @@
       "Primary prevention"
     ],
     "correct": 3,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 1,
       "slide": 9
@@ -1868,7 +1856,7 @@
       "Primary prevention"
     ],
     "correct": 1,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 1,
       "slide": 9
@@ -1883,7 +1871,7 @@
       "The disease occurs at its habitual background level"
     ],
     "correct": 1,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 1,
       "slide": 30
@@ -1898,7 +1886,7 @@
       "It requires every person in the population to be immune"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 1,
       "slide": 37
@@ -1913,7 +1901,7 @@
       "The interval between infection and the onset of clinical illness"
     ],
     "correct": 3,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 2,
       "slide": 7
@@ -1928,7 +1916,7 @@
       "Disease with signs and symptoms already present"
     ],
     "correct": 1,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 2,
       "slide": 5
@@ -1943,7 +1931,7 @@
       "90%"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 2,
       "slide": 14
@@ -1958,7 +1946,7 @@
       "The number of new cases per person-year"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 2,
       "slide": 15
@@ -1973,7 +1961,7 @@
       "The estimated survival probability reaches 50% at 18 months"
     ],
     "correct": 3,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 2,
       "slide": 26
@@ -1988,7 +1976,7 @@
       "20%"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 2,
       "slide": 27
@@ -2003,7 +1991,7 @@
       "A single patient examination with no further reporting"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 3,
       "slide": 4
@@ -2018,7 +2006,7 @@
       "It always recruits dedicated staff to actively search for every case"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 3,
       "slide": 5
@@ -2033,7 +2021,7 @@
       "50%"
     ],
     "correct": 1,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 3,
       "slide": 12
@@ -2048,7 +2036,7 @@
       "All existing cases at a single point in time"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 3,
       "slide": 14
@@ -2063,7 +2051,7 @@
       "0.6%"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 3,
       "slide": 21
@@ -2078,7 +2066,7 @@
       "80%"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 3,
       "slide": 31
@@ -2093,7 +2081,7 @@
       "The total number of deaths during the year"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 4,
       "slide": 10
@@ -2108,7 +2096,7 @@
       "0.8 deaths per 1,000"
     ],
     "correct": 1,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 4,
       "slide": 10
@@ -2123,7 +2111,7 @@
       "25%"
     ],
     "correct": 3,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 4,
       "slide": 13
@@ -2138,7 +2126,7 @@
       "When case-fatality is high and disease duration is short"
     ],
     "correct": 3,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 4,
       "slide": 12
@@ -2153,7 +2141,7 @@
       "45 years"
     ],
     "correct": 3,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 4,
       "slide": 17
@@ -2168,7 +2156,7 @@
       "It converts proportionate mortality directly into incidence"
     ],
     "correct": 1,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 4,
       "slide": 27
@@ -2183,7 +2171,7 @@
       "Agent, host, and environment only"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 5,
       "slide": 8
@@ -2198,7 +2186,7 @@
       "Case series"
     ],
     "correct": 0,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 5,
       "slide": 10
@@ -2213,7 +2201,7 @@
       "It generally lacks a comparison group"
     ],
     "correct": 3,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 5,
       "slide": 12
@@ -2228,7 +2216,7 @@
       "A randomly assigned treatment dose"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 5,
       "slide": 14
@@ -2243,7 +2231,7 @@
       "Participants are always followed from birth"
     ],
     "correct": 1,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 5,
       "slide": 18
@@ -2258,11 +2246,121 @@
       "20%"
     ],
     "correct": 2,
-    "marks": "1.00",
+    "marks": "0.50",
     "source": {
       "lecture": 5,
       "slide": 23
     }
+  },
+  {
+    "q": "What is the primary aim of a case-control study?",
+    "a": [
+      "See how common a disease is right now.",
+      "Test a hypothesis about a possible cause of a disease.",
+      "Prove what causes disease.",
+      "Count new disease cases."
+    ],
+    "correct": 1,
+    "marks": "0.50"
+  },
+  {
+    "q": "In a cohort study, what is primarily measured over time?",
+    "a": [
+      "Incidence of disease",
+      "Risk factors of disease",
+      "Severity of disease symptoms",
+      "Prevalence of disease"
+    ],
+    "correct": 0,
+    "marks": "0.50"
+  },
+  {
+    "q": "What is the key characteristic of a cohort study?",
+    "a": [
+      "Participants are selected based on both exposure and disease",
+      "Participants are categorized based on disease status",
+      "Participants are randomly assigned to exposure groups",
+      "Participants are categorized based on exposure"
+    ],
+    "correct": 3,
+    "marks": "0.50"
+  },
+  {
+    "q": "A study found that regular sunscreen users have a relative risk of 0.7 for skin cancer. This means:",
+    "a": [
+      "No chance of getting skin cancer.",
+      "A higher risk of skin cancer.",
+      "A lower risk of skin cancer.",
+      "The same risk of skin cancer."
+    ],
+    "correct": 2,
+    "marks": "0.50"
+  },
+  {
+    "q": "What is a significant challenge in conducting a cohort study?",
+    "a": [
+      "It cannot account for confounding variables",
+      "It cannot be used to study rare exposures",
+      "It does not provide a direct measure of incidence",
+      "Loss of follow-up participants (drop-outs) which may lead to bias"
+    ],
+    "correct": 3,
+    "marks": "0.50"
+  },
+  {
+    "q": "In a cohort study with 300 smokers (30 cancer cases) and 300 non-smokers (3 cancer cases), what is the relative risk (RR)?",
+    "a": [
+      "3",
+      "10",
+      "15",
+      "5"
+    ],
+    "correct": 1,
+    "marks": "0.50"
+  },
+  {
+    "q": "Why is a highly specific screening test important?",
+    "a": [
+      "It reduces false positives and unnecessary follow-up tests.",
+      "It decreases the cost of treatment after diagnosis.",
+      "It increases the cultural acceptability of the screening procedure.",
+      "It ensures all individuals with the disease are identified."
+    ],
+    "correct": 0,
+    "marks": "0.50"
+  },
+  {
+    "q": "Which of the following best defines sensitivity in the context of screening tests?",
+    "a": [
+      "The degree to which a test is cost-effective in mass populations.",
+      "The ability of a test to correctly identify those who do not have the disease.",
+      "The degree of public acceptance of a screening test.",
+      "The ability of a test to correctly identify those who have the disease."
+    ],
+    "correct": 3,
+    "marks": "0.50"
+  },
+  {
+    "q": "A thermometer always shows 2 degrees higher than the actual temperature. This means:",
+    "a": [
+      "The thermometer is neither reliable nor valid.",
+      "The thermometer is reliable but not valid.",
+      "The thermometer has high validity but low reliability.",
+      "The thermometer is both valid and reliable."
+    ],
+    "correct": 1,
+    "marks": "0.50"
+  },
+  {
+    "q": "Which statement best describes the purpose of randomization in experimental study design?",
+    "a": [
+      "Researchers assign subjects to groups based on their characteristics",
+      "It removes the need to include a control group in the study",
+      "Participants have an equal probability of being assigned to any study group",
+      "It ensures all study groups receive the same intervention"
+    ],
+    "correct": 2,
+    "marks": "0.50"
   }
 ];
 
@@ -2563,24 +2661,37 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
     document.getElementById("decreaseTextSizeBtn").onclick = () => { if (textScaleValue > 0.85) { textScaleValue -= 0.1; applyTextScaleProperty(); } };
     function applyTextScaleProperty() { document.documentElement.style.setProperty('--qscale', textScaleValue); }
 
-    function initExamSystem() {
-        if(examSystemInitialized) return;
-        examSystemInitialized = true;
+    // Scheduled examination window in Saudi Arabia time.
+    const examStartTimestamp = new Date('2026-10-12T13:00:00+03:00').getTime();
+    const examDurationSeconds = 120 * 60;
+    const examEndTimestamp = examStartTimestamp + examDurationSeconds * 1000;
 
-        let remainSeconds = 120 * 60; 
-        setInterval(() => {
-            if (remainSeconds > 0) { remainSeconds--; examTimeUsedSeconds++; }
-            const hrs = Math.floor(remainSeconds / 3600).toString().padStart(2, '0');
-            const mins = Math.floor((remainSeconds % 3600) / 60).toString().padStart(2, '0');
-            const secs = (remainSeconds % 60).toString().padStart(2, '0');
-            document.getElementById("countdownTimerText").textContent = `${hrs}:${mins}:${secs}`;
-            syncExamOverviewMetrics();
-        }, 1000);
-
-        syncExamOverviewMetrics(); displayCurrentQuestion(); applyTextScaleProperty();
+    function getExamTiming(now = Date.now()) {
+        const remaining = Math.max(0, Math.min(examDurationSeconds, Math.floor((examEndTimestamp - now) / 1000)));
+        return { remaining, elapsed: examDurationSeconds - remaining };
     }
 
-    function startUploadSimulation() {
+    function updateExamClock() {
+        const timing = getExamTiming();
+        examTimeUsedSeconds = timing.elapsed;
+        const hours = Math.floor(timing.remaining / 3600).toString().padStart(2, '0');
+        const minutes = Math.floor((timing.remaining % 3600) / 60).toString().padStart(2, '0');
+        const seconds = (timing.remaining % 60).toString().padStart(2, '0');
+        const formatted = hours + ':' + minutes + ':' + seconds;
+        document.getElementById('timer-display').textContent = formatted;
+        document.getElementById('countdownTimerText').textContent = formatted;
+        syncExamOverviewMetrics();
+    }
+
+    function initExamSystem() {
+        if (examSystemInitialized) { updateExamClock(); return; }
+        examSystemInitialized = true;
+        startDashboardTimer();
+        displayCurrentQuestion();
+        applyTextScaleProperty();
+    }
+
+        function startUploadSimulation() {
         const fillBar = document.getElementById("uploadServerProgressFill");
         const arrowIco = document.getElementById("uploadArrowPlaceholder");
         const checkIco = document.getElementById("uploadSuccessTopBadge");
@@ -2667,6 +2778,7 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
             container.classList.add('hidden'); msg.classList.remove('hidden'); count.textContent = '0';
         }
     }
+    updateExamClock();
 </script>
 
 </body>
