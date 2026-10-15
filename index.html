@@ -1313,7 +1313,7 @@
 
             <div class="progress-section">
                 <div class="progress-row">
-                    <span class="progress-label" id="itemsCountLabel">Items 0 / 40</span>
+                    <span class="progress-label" id="itemsCountLabel">Items 0 / 50</span>
                     <div class="progress-track">
                         <div class="progress-bar" id="itemsProgressBarFill"></div>
                     </div>
@@ -1347,7 +1347,7 @@
                     <div class="meta-info">
                         <span id="currentQuestionIdLabel">Q.1</span>
                         <span id="currentQuestionTypeLabel">Multi Choice</span>
-                        <span id="currentQuestionMarksLabel">Marks: 0.75</span>
+                        <span id="currentQuestionMarksLabel">Marks: 0.50</span>
                     </div>
                     <div class="meta-divider"></div>
                     <div class="controls-row">
@@ -2403,6 +2403,116 @@
       "lecture": 5,
       "slide": 21
     }
+  },
+  {
+    "q": "Which nutrient is the body’s main dietary source of energy?",
+    "a": [
+      "Carbohydrate",
+      "Water",
+      "Vitamin C",
+      "Calcium"
+    ],
+    "correct": 0,
+    "marks": "0.75"
+  },
+  {
+    "q": "How much energy is provided by 10 grams of protein using 4 kcal per gram?",
+    "a": [
+      "10 kcal",
+      "40 kcal",
+      "90 kcal",
+      "100 kcal"
+    ],
+    "correct": 1,
+    "marks": "0.75"
+  },
+  {
+    "q": "Which food is a source of dietary fiber?",
+    "a": [
+      "Butter",
+      "Eggs",
+      "Lentils",
+      "Fish"
+    ],
+    "correct": 2,
+    "marks": "0.75"
+  },
+  {
+    "q": "Which nutrient provides no energy but is essential for transporting substances in the body?",
+    "a": [
+      "Fat",
+      "Protein",
+      "Carbohydrate",
+      "Water"
+    ],
+    "correct": 3,
+    "marks": "0.75"
+  },
+  {
+    "q": "Which process builds larger molecules from smaller units?",
+    "a": [
+      "Anabolism",
+      "Catabolism",
+      "Excretion",
+      "Defecation"
+    ],
+    "correct": 0,
+    "marks": "0.75"
+  },
+  {
+    "q": "Which food is a plant source of protein?",
+    "a": [
+      "Olive oil",
+      "Chickpeas",
+      "Table sugar",
+      "Butter"
+    ],
+    "correct": 1,
+    "marks": "0.75"
+  },
+  {
+    "q": "A person weighs 72 kg and is 1.8 m tall. What is the BMI, rounded to one decimal place?",
+    "a": [
+      "18.0 kg/m²",
+      "40.0 kg/m²",
+      "22.2 kg/m²",
+      "25.9 kg/m²"
+    ],
+    "correct": 2,
+    "marks": "0.75"
+  },
+  {
+    "q": "Which choice best illustrates variety in a healthy eating pattern?",
+    "a": [
+      "Eating only one favorite food",
+      "Avoiding all vegetables",
+      "Choosing foods only by color of packaging",
+      "Eating different foods within and across food groups"
+    ],
+    "correct": 3,
+    "marks": "0.75"
+  },
+  {
+    "q": "Which statement best describes an enzyme?",
+    "a": [
+      "A biological catalyst that speeds up a chemical reaction",
+      "A mineral that supplies energy",
+      "A type of dietary fiber",
+      "A storage form of glucose"
+    ],
+    "correct": 0,
+    "marks": "0.75"
+  },
+  {
+    "q": "Which statement about protein is correct?",
+    "a": [
+      "Protein contains no amino acids",
+      "Protein supports growth and tissue repair",
+      "Protein provides 9 kcal per gram",
+      "All amino acids must be obtained from food"
+    ],
+    "correct": 1,
+    "marks": "0.75"
   }
 ];
 
@@ -2487,7 +2597,7 @@ document.getElementById("modeProgressBarFill").style.width = `${itemsPercent}%`;
         const q = examQuestions[currentExamIndex];
         
         document.getElementById("currentQuestionIdLabel").textContent = `Q.${q.id}`;
-        document.getElementById("currentQuestionMarksLabel").textContent = `Marks: ${q.marks}`;
+        document.getElementById("currentQuestionMarksLabel").textContent = `Marks: 0.50`;
         document.getElementById("realQuestionTextBody").textContent = q.text;
 
         const toggleCheckbox = document.getElementById("toggle-checkbox");
